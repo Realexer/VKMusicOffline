@@ -36,7 +36,13 @@ static VKAPIClient *sharedSingleton;
 
 -(NSArray*) getUserMusic
 {
+    if(user == nil) {
+        // alarm
+        return nil;
+    }
+    
     NSMutableArray* musicList = [[NSMutableArray alloc] init];
+    
     @try {
         
         NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.vk.com/method/audio.get.xml?uid=%@&access_token=%@", [user objectForKey:@"user_id"], [user objectForKey:@"access_token"]]];
@@ -69,8 +75,7 @@ static VKAPIClient *sharedSingleton;
         
     }
     
-    return [musicList autorelease];
-    
+    return [musicList autorelease];    
 }
 
 @end

@@ -6,11 +6,9 @@
 //  Copyright (c) 2012 Softheme. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "RHManagedObject.h"
 
-
-@interface Audio : NSManagedObject
+@interface Audio : RHManagedObject
 
 @property (nonatomic, retain) NSNumber * aid;
 @property (nonatomic, retain) NSString * artist;

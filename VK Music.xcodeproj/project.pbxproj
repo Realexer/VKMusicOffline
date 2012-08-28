@@ -13,6 +13,10 @@
 		5DB23CFA15ED162F001DCE31 /* XMLReaderDef.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23CF815ED162F001DCE31 /* XMLReaderDef.m */; };
 		5DB23D0415ED1B36001DCE31 /* RHManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23D0115ED1B36001DCE31 /* RHManagedObject.m */; };
 		5DB23D0515ED1B36001DCE31 /* RHManagedObjectContextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23D0315ED1B36001DCE31 /* RHManagedObjectContextManager.m */; };
+		5DB23D0E15ED1D4A001DCE31 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23D0C15ED1D4A001DCE31 /* Model.xcdatamodeld */; };
+		5DB23D1015ED1DBC001DCE31 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB23D0F15ED1DBC001DCE31 /* CoreData.framework */; };
+		5DB23D1315ED1F3E001DCE31 /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23D1215ED1F3E001DCE31 /* Audio.m */; };
+		5DB23D1615ED1FD5001DCE31 /* VKMusicDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23D1515ED1FD5001DCE31 /* VKMusicDB.m */; };
 		5DC51C4A15EB7A21004866B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C4915EB7A21004866B7 /* UIKit.framework */; };
 		5DC51C4C15EB7A21004866B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C4B15EB7A21004866B7 /* Foundation.framework */; };
 		5DC51C4E15EB7A21004866B7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C4D15EB7A21004866B7 /* CoreGraphics.framework */; };
@@ -40,6 +44,12 @@
 		5DB23D0115ED1B36001DCE31 /* RHManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHManagedObject.m; sourceTree = "<group>"; };
 		5DB23D0215ED1B36001DCE31 /* RHManagedObjectContextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHManagedObjectContextManager.h; sourceTree = "<group>"; };
 		5DB23D0315ED1B36001DCE31 /* RHManagedObjectContextManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHManagedObjectContextManager.m; sourceTree = "<group>"; };
+		5DB23D0D15ED1D4A001DCE31 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		5DB23D0F15ED1DBC001DCE31 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5DB23D1115ED1F3E001DCE31 /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Audio.h; path = DB/Audio.h; sourceTree = "<group>"; };
+		5DB23D1215ED1F3E001DCE31 /* Audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Audio.m; path = DB/Audio.m; sourceTree = "<group>"; };
+		5DB23D1415ED1FD5001DCE31 /* VKMusicDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKMusicDB.h; sourceTree = "<group>"; };
+		5DB23D1515ED1FD5001DCE31 /* VKMusicDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKMusicDB.m; sourceTree = "<group>"; };
 		5DC51C4515EB7A21004866B7 /* VK Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK Music.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC51C4915EB7A21004866B7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5DC51C4B15EB7A21004866B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -66,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DB23D1015ED1DBC001DCE31 /* CoreData.framework in Frameworks */,
 				5DC51C6715EB7C77004866B7 /* AVFoundation.framework in Frameworks */,
 				5DC51C4A15EB7A21004866B7 /* UIKit.framework in Frameworks */,
 				5DC51C4C15EB7A21004866B7 /* Foundation.framework in Frameworks */,
@@ -79,11 +90,14 @@
 		5DB23CF415ED162F001DCE31 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				5DB23D0A15ED1D31001DCE31 /* DB */,
 				5DB23CFF15ED1B36001DCE31 /* RHManagedObject */,
 				5DB23CF515ED162F001DCE31 /* VKAPIClient.h */,
 				5DB23CF615ED162F001DCE31 /* VKAPIClient.m */,
 				5DB23CF715ED162F001DCE31 /* XMLReaderDef.h */,
 				5DB23CF815ED162F001DCE31 /* XMLReaderDef.m */,
+				5DB23D1415ED1FD5001DCE31 /* VKMusicDB.h */,
+				5DB23D1515ED1FD5001DCE31 /* VKMusicDB.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -97,6 +111,16 @@
 				5DB23D0315ED1B36001DCE31 /* RHManagedObjectContextManager.m */,
 			);
 			path = RHManagedObject;
+			sourceTree = "<group>";
+		};
+		5DB23D0A15ED1D31001DCE31 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				5DB23D0C15ED1D4A001DCE31 /* Model.xcdatamodeld */,
+				5DB23D1115ED1F3E001DCE31 /* Audio.h */,
+				5DB23D1215ED1F3E001DCE31 /* Audio.m */,
+			);
+			name = DB;
 			sourceTree = "<group>";
 		};
 		5DC51C3A15EB7A21004866B7 = {
@@ -119,6 +143,7 @@
 		5DC51C4815EB7A21004866B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5DB23D0F15ED1DBC001DCE31 /* CoreData.framework */,
 				5DC51C6615EB7C77004866B7 /* AVFoundation.framework */,
 				5DC51C4915EB7A21004866B7 /* UIKit.framework */,
 				5DC51C4B15EB7A21004866B7 /* Foundation.framework */,
@@ -252,6 +277,9 @@
 				5DB23CFA15ED162F001DCE31 /* XMLReaderDef.m in Sources */,
 				5DB23D0415ED1B36001DCE31 /* RHManagedObject.m in Sources */,
 				5DB23D0515ED1B36001DCE31 /* RHManagedObjectContextManager.m in Sources */,
+				5DB23D0E15ED1D4A001DCE31 /* Model.xcdatamodeld in Sources */,
+				5DB23D1315ED1F3E001DCE31 /* Audio.m in Sources */,
+				5DB23D1615ED1FD5001DCE31 /* VKMusicDB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +384,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5DB23D0C15ED1D4A001DCE31 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5DB23D0D15ED1D4A001DCE31 /* Model.xcdatamodel */,
+			);
+			currentVersion = 5DB23D0D15ED1D4A001DCE31 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = DB/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5DC51C3C15EB7A21004866B7 /* Project object */;
 }
