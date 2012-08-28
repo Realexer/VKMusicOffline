@@ -1,0 +1,361 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5DB23CF215ED1623001DCE31 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23CF015ED1623001DCE31 /* ViewController.m */; };
+		5DB23CF315ED1623001DCE31 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DB23CF115ED1623001DCE31 /* ViewController.xib */; };
+		5DB23CF915ED162F001DCE31 /* VKAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23CF615ED162F001DCE31 /* VKAPIClient.m */; };
+		5DB23CFA15ED162F001DCE31 /* XMLReaderDef.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23CF815ED162F001DCE31 /* XMLReaderDef.m */; };
+		5DB23D0415ED1B36001DCE31 /* RHManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23D0115ED1B36001DCE31 /* RHManagedObject.m */; };
+		5DB23D0515ED1B36001DCE31 /* RHManagedObjectContextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23D0315ED1B36001DCE31 /* RHManagedObjectContextManager.m */; };
+		5DC51C4A15EB7A21004866B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C4915EB7A21004866B7 /* UIKit.framework */; };
+		5DC51C4C15EB7A21004866B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C4B15EB7A21004866B7 /* Foundation.framework */; };
+		5DC51C4E15EB7A21004866B7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C4D15EB7A21004866B7 /* CoreGraphics.framework */; };
+		5DC51C5415EB7A21004866B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5DC51C5215EB7A21004866B7 /* InfoPlist.strings */; };
+		5DC51C5615EB7A21004866B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC51C5515EB7A21004866B7 /* main.m */; };
+		5DC51C5A15EB7A21004866B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC51C5915EB7A21004866B7 /* AppDelegate.m */; };
+		5DC51C6715EB7C77004866B7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C6615EB7C77004866B7 /* AVFoundation.framework */; };
+		5DC51C6A15EB7D55004866B7 /* 10. Space Bound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5DC51C6915EB7D55004866B7 /* 10. Space Bound.mp3 */; };
+		5DC51C7A15ECF4CE004866B7 /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC51C7815ECF4CE004866B7 /* AuthorizationViewController.m */; };
+		5DC51C7B15ECF4CE004866B7 /* AuthorizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DC51C7915ECF4CE004866B7 /* AuthorizationViewController.xib */; };
+		5DC51C7D15ED0604004866B7 /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DC51C7C15ED0604004866B7 /* Window.xib */; };
+		5DC51C8C15ED0B94004866B7 /* SynchronizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC51C8A15ED0B94004866B7 /* SynchronizationViewController.m */; };
+		5DC51C8D15ED0B94004866B7 /* SynchronizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DC51C8B15ED0B94004866B7 /* SynchronizationViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5DB23CEF15ED1623001DCE31 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ViewController.h; sourceTree = "<group>"; };
+		5DB23CF015ED1623001DCE31 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ViewController.m; sourceTree = "<group>"; };
+		5DB23CF115ED1623001DCE31 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = ViewControllers/ViewController.xib; sourceTree = "<group>"; };
+		5DB23CF515ED162F001DCE31 /* VKAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKAPIClient.h; sourceTree = "<group>"; };
+		5DB23CF615ED162F001DCE31 /* VKAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKAPIClient.m; sourceTree = "<group>"; };
+		5DB23CF715ED162F001DCE31 /* XMLReaderDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReaderDef.h; sourceTree = "<group>"; };
+		5DB23CF815ED162F001DCE31 /* XMLReaderDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReaderDef.m; sourceTree = "<group>"; };
+		5DB23D0015ED1B36001DCE31 /* RHManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHManagedObject.h; sourceTree = "<group>"; };
+		5DB23D0115ED1B36001DCE31 /* RHManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHManagedObject.m; sourceTree = "<group>"; };
+		5DB23D0215ED1B36001DCE31 /* RHManagedObjectContextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHManagedObjectContextManager.h; sourceTree = "<group>"; };
+		5DB23D0315ED1B36001DCE31 /* RHManagedObjectContextManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHManagedObjectContextManager.m; sourceTree = "<group>"; };
+		5DC51C4515EB7A21004866B7 /* VK Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK Music.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DC51C4915EB7A21004866B7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5DC51C4B15EB7A21004866B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5DC51C4D15EB7A21004866B7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5DC51C5115EB7A21004866B7 /* VK Music-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VK Music-Info.plist"; sourceTree = "<group>"; };
+		5DC51C5315EB7A21004866B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5DC51C5515EB7A21004866B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5DC51C5715EB7A21004866B7 /* VK Music-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VK Music-Prefix.pch"; sourceTree = "<group>"; };
+		5DC51C5815EB7A21004866B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5DC51C5915EB7A21004866B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5DC51C6615EB7C77004866B7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5DC51C6915EB7D55004866B7 /* 10. Space Bound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "10. Space Bound.mp3"; sourceTree = "<group>"; };
+		5DC51C7715ECF4CE004866B7 /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthorizationViewController.h; path = ViewControllers/AuthorizationViewController.h; sourceTree = "<group>"; };
+		5DC51C7815ECF4CE004866B7 /* AuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthorizationViewController.m; path = ViewControllers/AuthorizationViewController.m; sourceTree = "<group>"; };
+		5DC51C7915ECF4CE004866B7 /* AuthorizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthorizationViewController.xib; path = ViewControllers/AuthorizationViewController.xib; sourceTree = "<group>"; };
+		5DC51C7C15ED0604004866B7 /* Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
+		5DC51C8915ED0B94004866B7 /* SynchronizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynchronizationViewController.h; path = ViewControllers/SynchronizationViewController.h; sourceTree = "<group>"; };
+		5DC51C8A15ED0B94004866B7 /* SynchronizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SynchronizationViewController.m; path = ViewControllers/SynchronizationViewController.m; sourceTree = "<group>"; };
+		5DC51C8B15ED0B94004866B7 /* SynchronizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SynchronizationViewController.xib; path = ViewControllers/SynchronizationViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5DC51C4215EB7A21004866B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DC51C6715EB7C77004866B7 /* AVFoundation.framework in Frameworks */,
+				5DC51C4A15EB7A21004866B7 /* UIKit.framework in Frameworks */,
+				5DC51C4C15EB7A21004866B7 /* Foundation.framework in Frameworks */,
+				5DC51C4E15EB7A21004866B7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5DB23CF415ED162F001DCE31 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				5DB23CFF15ED1B36001DCE31 /* RHManagedObject */,
+				5DB23CF515ED162F001DCE31 /* VKAPIClient.h */,
+				5DB23CF615ED162F001DCE31 /* VKAPIClient.m */,
+				5DB23CF715ED162F001DCE31 /* XMLReaderDef.h */,
+				5DB23CF815ED162F001DCE31 /* XMLReaderDef.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		5DB23CFF15ED1B36001DCE31 /* RHManagedObject */ = {
+			isa = PBXGroup;
+			children = (
+				5DB23D0015ED1B36001DCE31 /* RHManagedObject.h */,
+				5DB23D0115ED1B36001DCE31 /* RHManagedObject.m */,
+				5DB23D0215ED1B36001DCE31 /* RHManagedObjectContextManager.h */,
+				5DB23D0315ED1B36001DCE31 /* RHManagedObjectContextManager.m */,
+			);
+			path = RHManagedObject;
+			sourceTree = "<group>";
+		};
+		5DC51C3A15EB7A21004866B7 = {
+			isa = PBXGroup;
+			children = (
+				5DC51C4F15EB7A21004866B7 /* VK Music */,
+				5DC51C4815EB7A21004866B7 /* Frameworks */,
+				5DC51C4615EB7A21004866B7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5DC51C4615EB7A21004866B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5DC51C4515EB7A21004866B7 /* VK Music.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5DC51C4815EB7A21004866B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DC51C6615EB7C77004866B7 /* AVFoundation.framework */,
+				5DC51C4915EB7A21004866B7 /* UIKit.framework */,
+				5DC51C4B15EB7A21004866B7 /* Foundation.framework */,
+				5DC51C4D15EB7A21004866B7 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5DC51C4F15EB7A21004866B7 /* VK Music */ = {
+			isa = PBXGroup;
+			children = (
+				5DB23CF415ED162F001DCE31 /* model */,
+				5DC51C7515ECF485004866B7 /* ViewControllers */,
+				5DC51C6815EB7D55004866B7 /* media */,
+				5DC51C5815EB7A21004866B7 /* AppDelegate.h */,
+				5DC51C5915EB7A21004866B7 /* AppDelegate.m */,
+				5DC51C5015EB7A21004866B7 /* Supporting Files */,
+			);
+			path = "VK Music";
+			sourceTree = "<group>";
+		};
+		5DC51C5015EB7A21004866B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5DC51C5115EB7A21004866B7 /* VK Music-Info.plist */,
+				5DC51C5215EB7A21004866B7 /* InfoPlist.strings */,
+				5DC51C5515EB7A21004866B7 /* main.m */,
+				5DC51C5715EB7A21004866B7 /* VK Music-Prefix.pch */,
+				5DC51C7C15ED0604004866B7 /* Window.xib */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5DC51C6815EB7D55004866B7 /* media */ = {
+			isa = PBXGroup;
+			children = (
+				5DC51C6915EB7D55004866B7 /* 10. Space Bound.mp3 */,
+			);
+			path = media;
+			sourceTree = "<group>";
+		};
+		5DC51C7515ECF485004866B7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5DB23CEF15ED1623001DCE31 /* ViewController.h */,
+				5DB23CF015ED1623001DCE31 /* ViewController.m */,
+				5DB23CF115ED1623001DCE31 /* ViewController.xib */,
+				5DC51C7715ECF4CE004866B7 /* AuthorizationViewController.h */,
+				5DC51C7815ECF4CE004866B7 /* AuthorizationViewController.m */,
+				5DC51C7915ECF4CE004866B7 /* AuthorizationViewController.xib */,
+				5DC51C8915ED0B94004866B7 /* SynchronizationViewController.h */,
+				5DC51C8A15ED0B94004866B7 /* SynchronizationViewController.m */,
+				5DC51C8B15ED0B94004866B7 /* SynchronizationViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5DC51C4415EB7A21004866B7 /* VK Music */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DC51C6315EB7A21004866B7 /* Build configuration list for PBXNativeTarget "VK Music" */;
+			buildPhases = (
+				5DC51C4115EB7A21004866B7 /* Sources */,
+				5DC51C4215EB7A21004866B7 /* Frameworks */,
+				5DC51C4315EB7A21004866B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VK Music";
+			productName = "VK Music";
+			productReference = 5DC51C4515EB7A21004866B7 /* VK Music.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5DC51C3C15EB7A21004866B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = Softheme;
+			};
+			buildConfigurationList = 5DC51C3F15EB7A21004866B7 /* Build configuration list for PBXProject "VK Music" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5DC51C3A15EB7A21004866B7;
+			productRefGroup = 5DC51C4615EB7A21004866B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5DC51C4415EB7A21004866B7 /* VK Music */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5DC51C4315EB7A21004866B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DC51C5415EB7A21004866B7 /* InfoPlist.strings in Resources */,
+				5DC51C6A15EB7D55004866B7 /* 10. Space Bound.mp3 in Resources */,
+				5DC51C7B15ECF4CE004866B7 /* AuthorizationViewController.xib in Resources */,
+				5DC51C7D15ED0604004866B7 /* Window.xib in Resources */,
+				5DC51C8D15ED0B94004866B7 /* SynchronizationViewController.xib in Resources */,
+				5DB23CF315ED1623001DCE31 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5DC51C4115EB7A21004866B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DC51C5615EB7A21004866B7 /* main.m in Sources */,
+				5DC51C5A15EB7A21004866B7 /* AppDelegate.m in Sources */,
+				5DC51C7A15ECF4CE004866B7 /* AuthorizationViewController.m in Sources */,
+				5DC51C8C15ED0B94004866B7 /* SynchronizationViewController.m in Sources */,
+				5DB23CF215ED1623001DCE31 /* ViewController.m in Sources */,
+				5DB23CF915ED162F001DCE31 /* VKAPIClient.m in Sources */,
+				5DB23CFA15ED162F001DCE31 /* XMLReaderDef.m in Sources */,
+				5DB23D0415ED1B36001DCE31 /* RHManagedObject.m in Sources */,
+				5DB23D0515ED1B36001DCE31 /* RHManagedObjectContextManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5DC51C5215EB7A21004866B7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5DC51C5315EB7A21004866B7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5DC51C6115EB7A21004866B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5DC51C6215EB7A21004866B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5DC51C6415EB7A21004866B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VK Music/VK Music-Prefix.pch";
+				INFOPLIST_FILE = "VK Music/VK Music-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5DC51C6515EB7A21004866B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VK Music/VK Music-Prefix.pch";
+				INFOPLIST_FILE = "VK Music/VK Music-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5DC51C3F15EB7A21004866B7 /* Build configuration list for PBXProject "VK Music" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DC51C6115EB7A21004866B7 /* Debug */,
+				5DC51C6215EB7A21004866B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DC51C6315EB7A21004866B7 /* Build configuration list for PBXNativeTarget "VK Music" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DC51C6415EB7A21004866B7 /* Debug */,
+				5DC51C6515EB7A21004866B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5DC51C3C15EB7A21004866B7 /* Project object */;
+}
