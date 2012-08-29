@@ -126,7 +126,7 @@ static RHManagedObjectContextManager *sharedInstance = nil;
 
 // Do I need to lock the context?
 // http://stackoverflow.com/questions/5236860/app-freeze-on-coredata-save
--(void)commit {
+-(BOOL)commit {
 	
  	NSManagedObjectContext *moc = [self managedObjectContext];
 	NSError *error = nil;
@@ -139,12 +139,14 @@ static RHManagedObjectContextManager *sharedInstance = nil;
 	
 	if ([moc hasChanges] && ![moc save:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        return NO;
 		abort();
 	}
 	
 	// Is this safe to do here?  Probably... I think the moc will still have a retain within the NSNotification
 	// and will be gracefully trashed once mocDidSave: is called.
 	[self discardManagedObjectContext];
+    return YES;
 }
 
 // This is the NSManagedObjectContextDidSaveNotification delegate method.  It gets called when a commit is applied

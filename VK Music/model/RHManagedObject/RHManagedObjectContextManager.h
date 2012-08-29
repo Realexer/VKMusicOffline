@@ -46,7 +46,7 @@
 +(RHManagedObjectContextManager *)sharedInstance;
 -(NSManagedObjectContext *)managedObjectContext;
 -(void)deleteStore;
--(void)commit;
+-(BOOL)commit;
 -(void)discardManagedObjectContext;
 -(NSUInteger)pendingChangesCount;
 

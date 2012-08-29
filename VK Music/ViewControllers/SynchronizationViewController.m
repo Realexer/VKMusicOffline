@@ -8,6 +8,7 @@
 
 #import "SynchronizationViewController.h"
 #import "VKAPIClient.h"
+#import "VKMusicDB.h"
 
 @interface SynchronizationViewController ()
 
@@ -27,7 +28,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[VKAPIClient sharedInstance] getUserMusic];
+    
+    [[VKMusicDB sharedInstance] deleteAllMusic];
+    NSArray *musicList = [[VKAPIClient sharedInstance] getUserMusic];
+    BOOL result = [[VKMusicDB sharedInstance] saveMusic:musicList];
+    
+    if(result) {
+        NSArray *savedMusic = [[VKMusicDB sharedInstance] getAllMusic];
+        NSLog(@"%@", savedMusic);
+    }
+
 }
 
 - (void)viewDidUnload

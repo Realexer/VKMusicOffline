@@ -3,12 +3,12 @@
 //
 //  Starbucks
 //
-//  Created  on 3/2/11.
+//  Created by Vitaliy Volokh on 3/2/11.
 //  Copyright 2011 Douglas Consulting. All rights reserved.
 
 #import "XMLReaderDef.h"
 
-NSString *const kXMLReaderTextNodeKeyDef = @"text";
+NSString *const kXMLReaderTextNodeKeyDef = @"_content";
 
 @interface XMLReaderDef (Internal)
 
@@ -19,6 +19,11 @@ NSString *const kXMLReaderTextNodeKeyDef = @"text";
 
 
 @implementation XMLReaderDef
+
++ (NSString *) getTextNodeKey 
+{
+    return kXMLReaderTextNodeKeyDef;
+}
 
 #pragma mark -
 #pragma mark Public methods
@@ -42,7 +47,7 @@ NSString *const kXMLReaderTextNodeKeyDef = @"text";
 
 - (id)initWithError:(NSError **)error
 {
-    if (self = [super init])
+    if ((self = [super init]))
     {
         errorPointer = error;
     }
@@ -136,7 +141,7 @@ NSString *const kXMLReaderTextNodeKeyDef = @"text";
     // Set the text property
     if ([textInProgress length] > 0)
     {
-        [dictInProgress setObject:textInProgress forKey:kXMLReaderTextNodeKeyDef];
+        [dictInProgress setObject:[textInProgress stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] forKey:kXMLReaderTextNodeKeyDef];
         
         // Reset the text
         [textInProgress release];

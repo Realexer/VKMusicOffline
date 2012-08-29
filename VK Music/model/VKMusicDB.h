@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RHManagedObjectContextManager.h"
+#import "Audio.h"
 
 @interface VKMusicDB : NSObject
+
++(VKMusicDB*) sharedInstance;
+
+-(BOOL) saveMusic:(NSArray *) musicList;
+-(NSArray *) getAllMusic;
+-(BOOL) deleteAllMusic;
 
 @end
