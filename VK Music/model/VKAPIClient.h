@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Audio.h"
+
 
 @interface VKAPIClient : NSObject
 

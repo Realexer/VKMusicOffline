@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FileDownloader.h"
 
-@interface SynchronizationViewController : UIViewController
+@interface SynchronizationViewController : UIViewController<FileDownloaderDelegate>
+
 
 @end

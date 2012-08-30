@@ -116,7 +116,7 @@ static VKMusicDB *sharedSingleton;
         
         Audio *newAudio = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Audio class]) inManagedObjectContext:[self _getContext]];
         
-           newAudio.aid = aid;
+        newAudio.aid = aid;
         newAudio.artist = [[audioItem objectForKey:@"artist"] valueForKey:@"_content"];
         newAudio.duration = [[audioItem objectForKey:@"duration"] valueForKey:@"_content"];
         newAudio.lyrics_id = [NSNumber numberWithInt:[[[audioItem objectForKey:@"lyrics_id"] valueForKey:@"_content"] intValue]];
@@ -129,6 +129,7 @@ static VKMusicDB *sharedSingleton;
     
     return result;
 }
+
 
 
 -(NSArray *) getAllMusic 

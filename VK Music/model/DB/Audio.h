@@ -2,11 +2,14 @@
 //  Audio.h
 //  VK Music
 //
-//  Created by Vitaliy Volokh on 8/28/12.
+//  Created by Vitaliy Volokh on 8/30/12.
 //  Copyright (c) 2012 Softheme. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "RHManagedObject.h"
+
 
 @interface Audio : RHManagedObject
 
@@ -17,5 +20,6 @@
 @property (nonatomic, retain) NSNumber * owner_id;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * url;
+@property (nonatomic, retain) NSNumber * downloaded;
 
 @end

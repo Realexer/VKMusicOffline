@@ -78,4 +78,24 @@ static VKAPIClient *sharedSingleton;
     return [musicList autorelease];    
 }
 
+
+-(BOOL) saveAudioFile:(NSData*) fileData ofAudioItem:(Audio *) audioItem 
+{
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@", audioItem.artist, audioItem.title]];
+    
+    return [fileData writeToFile:appFile atomically:YES];
+}
+
+-(NSData*) getAudioFile:(Audio *) audioItem {
+
+}
+
+-(BOOL) deleteAudioFile:(Audio *) audioItem {
+
+}
+
+
 @end
