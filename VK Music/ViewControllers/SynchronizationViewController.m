@@ -16,6 +16,8 @@
 
 @implementation SynchronizationViewController
 
+@synthesize songsTable;
+@synthesize musicList;
 
 
 - (void)viewDidLoad
@@ -23,49 +25,76 @@
     [super viewDidLoad];
 }
 
+
 -(void) viewDidAppear:(BOOL)animated 
 {
     [super viewDidAppear:animated];
     
-    [[VKMusicDB sharedInstance] deleteAllMusic];
-    NSArray *musicList = [[VKAPIClient sharedInstance] getUserMusic];
-    BOOL result = [[VKMusicDB sharedInstance] saveMusic:musicList];
+    //[[VKMusicDB sharedInstance] deleteAllMusic];
+    NSArray *userMusic = [[VKAPIClient sharedInstance] getUserMusic];
     
-    if(result) 
-    {
-        NSArray *savedMusic = [[VKMusicDB sharedInstance] getAllMusic];
-        NSLog(@"%@", savedMusic);
-        
-        for (int i = 0; i < [savedMusic count]; i++) 
-        {
-            Audio *audioItem = [savedMusic objectAtIndex:i];
-            
-            UILabel *audioName = [[UILabel alloc] initWithFrame:CGRectMake(0, i * 30, self.view.frame.size.width, 14)];
-            [audioName setFont:[UIFont systemFontOfSize:14]];
-            audioName.text = [NSString stringWithFormat:@"%@ - %@", audioItem.artist, audioItem.title];
-            [self.view addSubview:audioName];
-            
-            if([audioItem.downloaded boolValue] == NO) {
-            
-                UIProgressView *progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
-                progressView.frame = CGRectMake(0, (i * 30) + 15 , self.view.frame.size.width, 10);
-                progressView.tag = i + 100;
-                progressView.progress = 0;
-                [self.view addSubview:progressView];
-                
-                FileDownloader *downloader = [[FileDownloader alloc] init];
-                [downloader setDelegate:self];
-                [downloader setTag:progressView.tag];
-                [downloader downloadAudioFile:audioItem];
-            } else {
-                // downloaded
-                UILabel *downloaded = [[UILabel alloc] init];
-                downloaded.frame = CGRectMake(50, (i * 30) + 15 , self.view.frame.size.width, 10);
-                audioName.text = @"Downloaded";
-                [self.view addSubview:downloaded];
-            }
-        }
+    if(![[VKMusicDB sharedInstance] saveMusic:userMusic]) {
+        // could not save user music
     }
+    
+    // using music that we currently have in DB
+    self.musicList = [[VKMusicDB sharedInstance] getAllMusic];
+    
+    
+    for (int i = 0; i < [self.musicList count]; i++) 
+    {
+        Audio *audioItem = [self.musicList objectAtIndex:i];
+        
+        FileDownloader *downloader = [[FileDownloader alloc] init];
+        [downloader setDelegate:self];
+        [downloader setTag:i];
+        [downloader setAudio:audioItem];
+        [downloader downloadAudioFile];
+    }
+    
+    [self.songsTable reloadData];
+}
+
+#pragma mark UITableViewDelegate
+
+#pragma makr UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+{
+    return [self.musicList count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    static NSString *reuseIdentifier = @"test";
+    
+    UITableViewCell *musicTableCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    
+
+    Audio *audioItem = [self.musicList objectAtIndex:indexPath.row];
+
+    for (UIView *cellSubview in musicTableCell.contentView.subviews) {
+        [cellSubview removeFromSuperview];
+    }
+    
+    UILabel *songName = [[UILabel alloc] initWithFrame:CGRectMake(5, 2, musicTableCell.frame.size.width - 10, 18)];
+    songName.tag = 10;
+    songName.font = [UIFont systemFontOfSize:14];
+    songName.textColor = [UIColor greenColor];
+    songName.text = [NSString stringWithFormat:@"%@ - %@", audioItem.artist, audioItem.title];
+    [musicTableCell.contentView addSubview:songName];
+    
+    if([audioItem.downloaded boolValue] == NO) 
+    {
+        songName.textColor = [UIColor blueColor];
+        
+        UIProgressView *progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+        progressView.frame = CGRectMake(0, 25, musicTableCell.frame.size.width - 10, 10);
+        progressView.progress = 0;
+        progressView.tag = 5;
+        [musicTableCell.contentView addSubview:progressView];        
+    } 
+    
+    return [musicTableCell autorelease];
 }
 
 
@@ -76,26 +105,33 @@
 
 -(void) downloadingProgress:(FileDownloader*) client currentContentSize:(long long)currentContentSize 
 {
-    UIProgressView *progressView = (UIProgressView *)[self.view viewWithTag:client.tag];
-    progressView.progress = (float)currentContentSize/(float)client.expectedContentLength;
+    UITableViewCell *musicCell = [self.songsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:client.tag inSection:0]];
+    if(musicCell) {
+        UIProgressView *progressView = (UIProgressView *)[musicCell viewWithTag:5];
+        progressView.progress = (float)currentContentSize/(float)client.expectedContentLength;
+    }
 }
 
 -(void) downloadingFinished:(FileDownloader*) client 
 {
-
+    UITableViewCell *musicCell = [self.songsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:client.tag inSection:0]];
+    if(musicCell) {
+        UILabel *songName = (UILabel *) [musicCell viewWithTag:10];
+        songName.textColor = [UIColor greenColor];
+        
+        [[musicCell viewWithTag:5] removeFromSuperview];
+    }    
 }
 
 -(void) downloadingFailed:(FileDownloader*) client 
 {
     [client autorelease];
-}
-    
+}    
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
 }
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

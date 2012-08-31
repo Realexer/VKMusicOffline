@@ -16,8 +16,13 @@
 +(VKAPIClient *) sharedInstance;
 
 //
-@property (nonatomic, retain) NSDictionary *user;
-
+-(void) saveUserAuthData:(NSDictionary *) user;
+//
+-(NSDictionary*) getUserAuthData;
+//
+-(BOOL) saveAudioFile:(NSData*) fileData ofAudioItem:(Audio *) audioItem;
+//
+-(NSString *) getAudioFilePath:(Audio *) audioItem;
 //
 -(NSArray*) getUserMusic;
 

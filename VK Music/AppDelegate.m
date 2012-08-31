@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "SongsListViewController.h"
 
 @implementation AppDelegate
 

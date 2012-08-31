@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		5DAEDDF015EFB34000753DA7 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEDDEF15EFB34000753DA7 /* FileDownloader.m */; };
 		5DAEDDF315EFCC5500753DA7 /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEDDF215EFCC5500753DA7 /* Audio.m */; };
-		5DB23CF215ED1623001DCE31 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23CF015ED1623001DCE31 /* ViewController.m */; };
-		5DB23CF315ED1623001DCE31 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DB23CF115ED1623001DCE31 /* ViewController.xib */; };
+		5DB23CF215ED1623001DCE31 /* SongsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23CF015ED1623001DCE31 /* SongsListViewController.m */; };
+		5DB23CF315ED1623001DCE31 /* SongsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DB23CF115ED1623001DCE31 /* SongsListViewController.xib */; };
 		5DB23CF915ED162F001DCE31 /* VKAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23CF615ED162F001DCE31 /* VKAPIClient.m */; };
 		5DB23CFA15ED162F001DCE31 /* XMLReaderDef.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23CF815ED162F001DCE31 /* XMLReaderDef.m */; };
 		5DB23D0415ED1B36001DCE31 /* RHManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23D0115ED1B36001DCE31 /* RHManagedObject.m */; };
@@ -18,6 +18,9 @@
 		5DB23D0E15ED1D4A001DCE31 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23D0C15ED1D4A001DCE31 /* Model.xcdatamodeld */; };
 		5DB23D1015ED1DBC001DCE31 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB23D0F15ED1DBC001DCE31 /* CoreData.framework */; };
 		5DB23D1615ED1FD5001DCE31 /* VKMusicDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23D1515ED1FD5001DCE31 /* VKMusicDB.m */; };
+		5DC477BA15F0EB1100DA8863 /* PlaybackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC477B815F0EB1100DA8863 /* PlaybackViewController.m */; };
+		5DC477BB15F0EB1100DA8863 /* PlaybackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DC477B915F0EB1100DA8863 /* PlaybackViewController.xib */; };
+		5DC477BF15F0EB7D00DA8863 /* MusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC477BE15F0EB7D00DA8863 /* MusicPlayer.m */; };
 		5DC51C4A15EB7A21004866B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C4915EB7A21004866B7 /* UIKit.framework */; };
 		5DC51C4C15EB7A21004866B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C4B15EB7A21004866B7 /* Foundation.framework */; };
 		5DC51C4E15EB7A21004866B7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C4D15EB7A21004866B7 /* CoreGraphics.framework */; };
@@ -25,7 +28,6 @@
 		5DC51C5615EB7A21004866B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC51C5515EB7A21004866B7 /* main.m */; };
 		5DC51C5A15EB7A21004866B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC51C5915EB7A21004866B7 /* AppDelegate.m */; };
 		5DC51C6715EB7C77004866B7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC51C6615EB7C77004866B7 /* AVFoundation.framework */; };
-		5DC51C6A15EB7D55004866B7 /* 10. Space Bound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5DC51C6915EB7D55004866B7 /* 10. Space Bound.mp3 */; };
 		5DC51C7A15ECF4CE004866B7 /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC51C7815ECF4CE004866B7 /* AuthorizationViewController.m */; };
 		5DC51C7B15ECF4CE004866B7 /* AuthorizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DC51C7915ECF4CE004866B7 /* AuthorizationViewController.xib */; };
 		5DC51C7D15ED0604004866B7 /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DC51C7C15ED0604004866B7 /* Window.xib */; };
@@ -38,9 +40,9 @@
 		5DAEDDEF15EFB34000753DA7 /* FileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloader.m; sourceTree = "<group>"; };
 		5DAEDDF115EFCC5500753DA7 /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Audio.h; path = DB/Audio.h; sourceTree = "<group>"; };
 		5DAEDDF215EFCC5500753DA7 /* Audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Audio.m; path = DB/Audio.m; sourceTree = "<group>"; };
-		5DB23CEF15ED1623001DCE31 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ViewController.h; sourceTree = "<group>"; };
-		5DB23CF015ED1623001DCE31 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ViewController.m; sourceTree = "<group>"; };
-		5DB23CF115ED1623001DCE31 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = ViewControllers/ViewController.xib; sourceTree = "<group>"; };
+		5DB23CEF15ED1623001DCE31 /* SongsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongsListViewController.h; path = ViewControllers/SongsListViewController.h; sourceTree = "<group>"; };
+		5DB23CF015ED1623001DCE31 /* SongsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongsListViewController.m; path = ViewControllers/SongsListViewController.m; sourceTree = "<group>"; };
+		5DB23CF115ED1623001DCE31 /* SongsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongsListViewController.xib; path = ViewControllers/SongsListViewController.xib; sourceTree = "<group>"; };
 		5DB23CF515ED162F001DCE31 /* VKAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKAPIClient.h; sourceTree = "<group>"; };
 		5DB23CF615ED162F001DCE31 /* VKAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKAPIClient.m; sourceTree = "<group>"; };
 		5DB23CF715ED162F001DCE31 /* XMLReaderDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReaderDef.h; sourceTree = "<group>"; };
@@ -53,6 +55,11 @@
 		5DB23D0F15ED1DBC001DCE31 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5DB23D1415ED1FD5001DCE31 /* VKMusicDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKMusicDB.h; sourceTree = "<group>"; };
 		5DB23D1515ED1FD5001DCE31 /* VKMusicDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKMusicDB.m; sourceTree = "<group>"; };
+		5DC477B715F0EB1100DA8863 /* PlaybackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaybackViewController.h; path = ViewControllers/PlaybackViewController.h; sourceTree = "<group>"; };
+		5DC477B815F0EB1100DA8863 /* PlaybackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaybackViewController.m; path = ViewControllers/PlaybackViewController.m; sourceTree = "<group>"; };
+		5DC477B915F0EB1100DA8863 /* PlaybackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaybackViewController.xib; path = ViewControllers/PlaybackViewController.xib; sourceTree = "<group>"; };
+		5DC477BD15F0EB7D00DA8863 /* MusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicPlayer.h; sourceTree = "<group>"; };
+		5DC477BE15F0EB7D00DA8863 /* MusicPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayer.m; sourceTree = "<group>"; };
 		5DC51C4515EB7A21004866B7 /* VK Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK Music.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC51C4915EB7A21004866B7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5DC51C4B15EB7A21004866B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,7 +71,6 @@
 		5DC51C5815EB7A21004866B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5DC51C5915EB7A21004866B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5DC51C6615EB7C77004866B7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		5DC51C6915EB7D55004866B7 /* 10. Space Bound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "10. Space Bound.mp3"; sourceTree = "<group>"; };
 		5DC51C7715ECF4CE004866B7 /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthorizationViewController.h; path = ViewControllers/AuthorizationViewController.h; sourceTree = "<group>"; };
 		5DC51C7815ECF4CE004866B7 /* AuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthorizationViewController.m; path = ViewControllers/AuthorizationViewController.m; sourceTree = "<group>"; };
 		5DC51C7915ECF4CE004866B7 /* AuthorizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthorizationViewController.xib; path = ViewControllers/AuthorizationViewController.xib; sourceTree = "<group>"; };
@@ -166,6 +172,8 @@
 				5DC51C5815EB7A21004866B7 /* AppDelegate.h */,
 				5DC51C5915EB7A21004866B7 /* AppDelegate.m */,
 				5DC51C5015EB7A21004866B7 /* Supporting Files */,
+				5DC477BD15F0EB7D00DA8863 /* MusicPlayer.h */,
+				5DC477BE15F0EB7D00DA8863 /* MusicPlayer.m */,
 			);
 			path = "VK Music";
 			sourceTree = "<group>";
@@ -185,7 +193,6 @@
 		5DC51C6815EB7D55004866B7 /* media */ = {
 			isa = PBXGroup;
 			children = (
-				5DC51C6915EB7D55004866B7 /* 10. Space Bound.mp3 */,
 			);
 			path = media;
 			sourceTree = "<group>";
@@ -193,15 +200,18 @@
 		5DC51C7515ECF485004866B7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5DB23CEF15ED1623001DCE31 /* ViewController.h */,
-				5DB23CF015ED1623001DCE31 /* ViewController.m */,
-				5DB23CF115ED1623001DCE31 /* ViewController.xib */,
 				5DC51C7715ECF4CE004866B7 /* AuthorizationViewController.h */,
 				5DC51C7815ECF4CE004866B7 /* AuthorizationViewController.m */,
 				5DC51C7915ECF4CE004866B7 /* AuthorizationViewController.xib */,
 				5DC51C8915ED0B94004866B7 /* SynchronizationViewController.h */,
 				5DC51C8A15ED0B94004866B7 /* SynchronizationViewController.m */,
 				5DC51C8B15ED0B94004866B7 /* SynchronizationViewController.xib */,
+				5DC477B715F0EB1100DA8863 /* PlaybackViewController.h */,
+				5DC477B815F0EB1100DA8863 /* PlaybackViewController.m */,
+				5DC477B915F0EB1100DA8863 /* PlaybackViewController.xib */,
+				5DB23CEF15ED1623001DCE31 /* SongsListViewController.h */,
+				5DB23CF015ED1623001DCE31 /* SongsListViewController.m */,
+				5DB23CF115ED1623001DCE31 /* SongsListViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -258,11 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DC51C5415EB7A21004866B7 /* InfoPlist.strings in Resources */,
-				5DC51C6A15EB7D55004866B7 /* 10. Space Bound.mp3 in Resources */,
 				5DC51C7B15ECF4CE004866B7 /* AuthorizationViewController.xib in Resources */,
 				5DC51C7D15ED0604004866B7 /* Window.xib in Resources */,
 				5DC51C8D15ED0B94004866B7 /* SynchronizationViewController.xib in Resources */,
-				5DB23CF315ED1623001DCE31 /* ViewController.xib in Resources */,
+				5DB23CF315ED1623001DCE31 /* SongsListViewController.xib in Resources */,
+				5DC477BB15F0EB1100DA8863 /* PlaybackViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +287,7 @@
 				5DC51C5A15EB7A21004866B7 /* AppDelegate.m in Sources */,
 				5DC51C7A15ECF4CE004866B7 /* AuthorizationViewController.m in Sources */,
 				5DC51C8C15ED0B94004866B7 /* SynchronizationViewController.m in Sources */,
-				5DB23CF215ED1623001DCE31 /* ViewController.m in Sources */,
+				5DB23CF215ED1623001DCE31 /* SongsListViewController.m in Sources */,
 				5DB23CF915ED162F001DCE31 /* VKAPIClient.m in Sources */,
 				5DB23CFA15ED162F001DCE31 /* XMLReaderDef.m in Sources */,
 				5DB23D0415ED1B36001DCE31 /* RHManagedObject.m in Sources */,
@@ -286,6 +296,8 @@
 				5DB23D1615ED1FD5001DCE31 /* VKMusicDB.m in Sources */,
 				5DAEDDF015EFB34000753DA7 /* FileDownloader.m in Sources */,
 				5DAEDDF315EFCC5500753DA7 /* Audio.m in Sources */,
+				5DC477BA15F0EB1100DA8863 /* PlaybackViewController.m in Sources */,
+				5DC477BF15F0EB7D00DA8863 /* MusicPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +320,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Claus Mathorne (DB95HS3XZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Claus Mathorne (DB95HS3XZY)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -323,6 +336,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "B4F86B57-27B5-4964-BFC1-4988159D0985";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B4F86B57-27B5-4964-BFC1-4988159D0985";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -332,7 +347,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Claus Mathorne (DB95HS3XZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Claus Mathorne (DB95HS3XZY)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -341,6 +357,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "B4F86B57-27B5-4964-BFC1-4988159D0985";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B4F86B57-27B5-4964-BFC1-4988159D0985";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -349,10 +367,14 @@
 		5DC51C6415EB7A21004866B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Claus Mathorne (DB95HS3XZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Claus Mathorne (DB95HS3XZY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VK Music/VK Music-Prefix.pch";
 				INFOPLIST_FILE = "VK Music/VK Music-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B4F86B57-27B5-4964-BFC1-4988159D0985";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B4F86B57-27B5-4964-BFC1-4988159D0985";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -360,10 +382,14 @@
 		5DC51C6515EB7A21004866B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Claus Mathorne (DB95HS3XZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Claus Mathorne (DB95HS3XZY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VK Music/VK Music-Prefix.pch";
 				INFOPLIST_FILE = "VK Music/VK Music-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B4F86B57-27B5-4964-BFC1-4988159D0985";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B4F86B57-27B5-4964-BFC1-4988159D0985";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

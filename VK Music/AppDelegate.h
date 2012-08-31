@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class ViewController;
+@class SongsListViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

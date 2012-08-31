@@ -17,5 +17,7 @@
 -(BOOL) saveMusic:(NSArray *) musicList;
 -(NSArray *) getAllMusic;
 -(BOOL) deleteAllMusic;
+-(BOOL) setAudioDwonloaded:(Audio*) audioItem;
+-(Audio *) getAudioById:(NSNumber*) aid;
 
 @end

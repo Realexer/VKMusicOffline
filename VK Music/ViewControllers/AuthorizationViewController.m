@@ -41,13 +41,12 @@
 
         [self.navigationController popViewControllerAnimated:YES];
         
-        [[VKAPIClient sharedInstance] setUser:user];
-        
+        [[VKAPIClient sharedInstance] saveUserAuthData:user];
     }
     else 
     {
         //
-        textRange =[[currentURL lowercaseString] rangeOfString:[@"access_denied" lowercaseString]];
+        textRange = [[currentURL lowercaseString] rangeOfString:[@"access_denied" lowercaseString]];
         if (textRange.location != NSNotFound) {
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ooops! something gonna wrong..." message:@"Check your internet connection and try again!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             [alert show];

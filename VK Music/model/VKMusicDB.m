@@ -131,6 +131,29 @@ static VKMusicDB *sharedSingleton;
 }
 
 
+-(Audio *) getAudioById:(NSNumber*) aid 
+{
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Audio class]) inManagedObjectContext:[self _getContext]];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"aid = %@", aid]];
+    [fetchRequest setEntity:entity];
+    
+    
+    NSArray *res = [self _fetchRequest:fetchRequest];
+    [fetchRequest release];
+    return [res objectAtIndex:0];
+}
+
+
+-(BOOL) setAudioDwonloaded:(Audio*) audioItem 
+{
+    [audioItem setDownloaded:[NSNumber numberWithBool:YES]];
+    
+    return [[RHManagedObjectContextManager sharedInstance] commit];
+}
+
+
 
 -(NSArray *) getAllMusic 
 {
@@ -138,6 +161,12 @@ static VKMusicDB *sharedSingleton;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"aid" ascending:NO];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    [sortDescriptors release];
+    [sortDescriptor release];
 
     
     NSArray *res = [self _fetchRequest:fetchRequest];

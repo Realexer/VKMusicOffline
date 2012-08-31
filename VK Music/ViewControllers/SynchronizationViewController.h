@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FileDownloader.h"
 
-@interface SynchronizationViewController : UIViewController<FileDownloaderDelegate>
+@interface SynchronizationViewController : UIViewController<FileDownloaderDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, retain) IBOutlet UITableView *songsTable;
+@property (nonatomic, retain) NSArray *musicList;
 
 @end

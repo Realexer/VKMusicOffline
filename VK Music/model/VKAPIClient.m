@@ -11,10 +11,9 @@
 
 // singleton
 static VKAPIClient *sharedSingleton;
+static NSString *_userAuthDataKey = @"userAuthData";
 
 @implementation VKAPIClient
-
-@synthesize user;
 
 // syngleton initialization
 + (void)initialize
@@ -33,10 +32,23 @@ static VKAPIClient *sharedSingleton;
     return sharedSingleton;
 }
 
+// auth
+-(void) saveUserAuthData:(NSDictionary *) user 
+{
+    [[NSUserDefaults standardUserDefaults] setValue:user forKey:_userAuthDataKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
+-(NSDictionary*) getUserAuthData 
+{
+    return [[NSUserDefaults standardUserDefaults] valueForKey:_userAuthDataKey];
+}
+
+
+// music management
 -(NSArray*) getUserMusic
 {
-    if(user == nil) {
+    if([self getUserAuthData] == nil) {
         // alarm
         return nil;
     }
@@ -45,7 +57,7 @@ static VKAPIClient *sharedSingleton;
     
     @try {
         
-        NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.vk.com/method/audio.get.xml?uid=%@&access_token=%@", [user objectForKey:@"user_id"], [user objectForKey:@"access_token"]]];
+        NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.vk.com/method/audio.get.xml?uid=%@&access_token=%@", [[self getUserAuthData] objectForKey:@"user_id"], [[self getUserAuthData] objectForKey:@"access_token"]]];
         
         NSURLRequest* request = [[NSURLRequest alloc] initWithURL:url];
         NSURLResponse* response = nil;
@@ -79,21 +91,28 @@ static VKAPIClient *sharedSingleton;
 }
 
 
--(BOOL) saveAudioFile:(NSData*) fileData ofAudioItem:(Audio *) audioItem 
+-(NSString *) getAudioFilePath:(Audio *) audioItem 
 {
-
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@", audioItem.artist, audioItem.title]];
-    
-    return [fileData writeToFile:appFile atomically:YES];
+    return [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@", audioItem.artist, audioItem.title]];
 }
 
--(NSData*) getAudioFile:(Audio *) audioItem {
+
+-(BOOL) saveAudioFile:(NSData*) fileData ofAudioItem:(Audio *) audioItem 
+{
+    return [fileData writeToFile:[self getAudioFilePath:audioItem] atomically:YES];
+}
+
+
+-(NSData*) getAudioFile:(Audio *) audioItem 
+{
 
 }
 
--(BOOL) deleteAudioFile:(Audio *) audioItem {
+
+-(BOOL) deleteAudioFile:(Audio *) audioItem 
+{
 
 }
 
