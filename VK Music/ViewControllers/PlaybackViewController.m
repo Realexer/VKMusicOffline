@@ -7,6 +7,7 @@
 //
 
 #import "PlaybackViewController.h"
+#import <MediaPlayer/MPVolumeView.h>
 
 @interface PlaybackViewController ()
 
@@ -14,26 +15,26 @@
 
 @implementation PlaybackViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize playButton, pauseButton, songTitle, songArtist, seekingSlider, volumeSlider;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    MPVolumeView *myVolumeView = [[MPVolumeView alloc] initWithFrame:self.volumeSlider.frame];
+    [self.view addSubview: myVolumeView];
+    [myVolumeView release];
+    [volumeSlider removeFromSuperview];
+}
+
+-(void) viewDidAppear:(BOOL)animated 
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -41,15 +42,33 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(IBAction) playMusic:(UIButton *)sender 
+-(IBAction) playSong:(UIButton *)sender
 {
     [[MusicPlayer sharedInstance] play]; 
+    [playButton setHidden:YES];
+    [pauseButton setHidden:NO];
 }
 
--(IBAction) pauseMusic:(UIButton *)sender 
+-(IBAction) pauseSong:(UIButton *)sender
 {
     [[MusicPlayer sharedInstance] pause]; 
+    [playButton setHidden:NO];
+    [pauseButton setHidden:YES];
 }
 
+-(IBAction) nextSong:(UIButton *)sender
+{
+    [[MusicPlayer sharedInstance] next]; 
+}
+
+-(IBAction) previousSong:(UIButton *)sender
+{
+    [[MusicPlayer sharedInstance] previous]; 
+}
+
+-(IBAction) seeking:(UISlider *) slider
+{
+    
+}
 
 @end

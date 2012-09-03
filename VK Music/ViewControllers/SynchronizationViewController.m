@@ -23,13 +23,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Resynch" style:UIBarButtonItemStyleDone target:self action:@selector(resynch:)] autorelease];
 }
 
-
--(void) viewDidAppear:(BOOL)animated 
+-(IBAction)resynch:(UIBarButtonItem *)sender 
 {
-    [super viewDidAppear:animated];
-    
+    [[VKMusicDB sharedInstance] deleteAllMusic];
+    [self synch];
+}
+
+-(void) synch 
+{
     //[[VKMusicDB sharedInstance] deleteAllMusic];
     NSArray *userMusic = [[VKAPIClient sharedInstance] getUserMusic];
     
@@ -53,6 +57,12 @@
     }
     
     [self.songsTable reloadData];
+}
+
+-(void) viewDidAppear:(BOOL)animated 
+{
+    [super viewDidAppear:animated];
+    [self synch];
 }
 
 #pragma mark UITableViewDelegate
@@ -121,6 +131,8 @@
         
         [[musicCell viewWithTag:5] removeFromSuperview];
     }    
+    
+    [client release];
 }
 
 -(void) downloadingFailed:(FileDownloader*) client 

@@ -7,12 +7,15 @@
 //
 
 #import "MusicPlayer.h"
-#import "Audio.h"
 #import "VKAPIClient.h"
+#import "AppDelegate.h"
+#import "PlaybackViewController.h"
+#import <MediaPlayer/MPNowPlayingInfoCenter.h>
+#import <MediaPlayer/MPMediaItem.h>
 
 
 // singleton
-static MusicPlayer *sharedSingleton;
+static MusicPlayer *musicSingleton;
 
 
 @implementation MusicPlayer
@@ -27,21 +30,22 @@ static MusicPlayer *sharedSingleton;
     if(!initialized)
     {
         initialized = YES;
-        sharedSingleton = [[MusicPlayer alloc] init];
+        musicSingleton = [[MusicPlayer alloc] init];
     }
 }
+
 
 // public access
 + (MusicPlayer*) sharedInstance
 {
-    return sharedSingleton;
+    return musicSingleton;
 }
+
 
 -(id) init
 {
     self = [super init];
     
-    self.audioPlayer = [[AVAudioPlayer alloc] init];
     playlist = [[NSMutableArray alloc] init];
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
@@ -51,26 +55,87 @@ static MusicPlayer *sharedSingleton;
     return self;
 }
 
+
 -(void) setSongs:(NSArray *) songs 
 {   
+    [playlist removeAllObjects];
     for (Audio *audioItem in songs) 
     {
-        NSString *path = [[VKAPIClient sharedInstance] getAudioFilePath:audioItem];
-        NSURL *songUrl = [NSURL fileURLWithPath:path];
-        [playlist addObject:songUrl];
+        [playlist addObject:audioItem];
     }
+}
+
+
+-(Audio*) getCurrentSong 
+{
+    Audio *currentSongItem = nil;
+    
+    if(currentSong >= 0 && [playlist count] > currentSong) 
+    {
+        currentSongItem = [playlist objectAtIndex:currentSong];
+    } 
+    
+    return currentSongItem;
+}
+
+
+-(NSURL *) getCurrentSongURL
+{
+    NSURL *currentSongURL = nil;
+    
+    if(currentSong >= 0 && [playlist count] > currentSong) 
+    {
+        NSString *path = [[VKAPIClient sharedInstance] getAudioFilePath:[self getCurrentSong]];
+        currentSongURL = [NSURL fileURLWithPath:path];
+    } 
+    
+    return currentSongURL;
 }
 
 
 -(void) play 
 {
-    [self.audioPlayer initWithContentsOfURL:[playlist objectAtIndex:currentSong] error:nil];
-    [self.audioPlayer play];
+    [self showSongInfo];
+    
+    if([audioPlayer url] != nil && [audioPlayer isPlaying]) 
+    {
+        [audioPlayer stop];
+    }
+    
+    NSError *playingError = nil;
+    if(!audioPlayer) {
+        audioPlayer = [AVAudioPlayer alloc];
+    }
+    [audioPlayer initWithContentsOfURL:[self getCurrentSongURL] error:&playingError];
+    
+    if(playingError == nil) 
+    {
+        [audioPlayer play];
+    } else {
+        audioPlayer = nil;
+        currentSong = 0;
+    }
+}
+
+-(void) next 
+{
+    currentSong++;
+    [self play];
+}
+
+-(void) previous 
+{
+    currentSong--;
+    [self play];
 }
 
 -(void) pause 
 {
-    [self.audioPlayer pause];
+    if([audioPlayer isPlaying]) {
+        [audioPlayer pause];
+    } else {
+        [audioPlayer play];
+    }
 }
 
 
@@ -79,11 +144,37 @@ static MusicPlayer *sharedSingleton;
 
 }
 
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag 
+{
+    [self next];
+}
+
+-(void) showSongInfo
+{
+    if([self getCurrentSong]) 
+    {
+        UIViewController *currentViewController = [[[AppDelegate sharedInstance] navigationController] topViewController];
+        
+        if([currentViewController isKindOfClass:[PlaybackViewController class]]) 
+        {
+            [((PlaybackViewController*) currentViewController).songTitle setText:[[self getCurrentSong] title]];
+            [((PlaybackViewController*) currentViewController).songArtist setText:[[self getCurrentSong] artist]];
+        }
+
+        NSArray *keys = [NSArray arrayWithObjects:MPMediaItemPropertyTitle, MPMediaItemPropertyArtist, nil];
+        NSArray *values = [NSArray arrayWithObjects:[[self getCurrentSong] title], [[self getCurrentSong] artist],  nil];
+        NSDictionary *mediaInfo = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:mediaInfo];
+    }
+
+}
+
 
 -(void) dealloc 
 {
     [super dealloc];
     [audioPlayer release];
+    [playlist release];
 }
 
 @end

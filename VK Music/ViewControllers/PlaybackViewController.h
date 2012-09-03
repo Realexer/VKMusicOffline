@@ -10,9 +10,24 @@
 #import "MusicPlayer.h"
 
 
-@interface PlaybackViewController : UIViewController
+@interface PlaybackViewController : UIViewController 
+{
+    
+}
+@property (nonatomic, retain) IBOutlet UIButton *playButton;
+@property (nonatomic, retain) IBOutlet UIButton *pauseButton;
+@property (nonatomic, retain) IBOutlet UILabel *songTitle;
+@property (nonatomic, retain) IBOutlet UILabel *songArtist;
 
--(IBAction) playMusic:(UIButton *)sender;
--(IBAction) pauseMusic:(UIButton *)sender;
+@property (nonatomic, retain) IBOutlet UISlider *volumeSlider;
+@property (nonatomic, retain) IBOutlet UISlider *seekingSlider;
+
+
+-(IBAction) playSong:(UIButton *)sender;
+-(IBAction) pauseSong:(UIButton *)sender;
+-(IBAction) nextSong:(UIButton *)sender;
+-(IBAction) previousSong:(UIButton *)sender;
+
+-(IBAction) seeking:(UISlider*)sender;
 
 @end

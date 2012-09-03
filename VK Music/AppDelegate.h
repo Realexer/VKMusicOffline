@@ -12,6 +12,8 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
++(AppDelegate*) sharedInstance;
+
 @property (retain, nonatomic) IBOutlet UIWindow *window;
 
 @property (retain, nonatomic) IBOutlet UINavigationController *navigationController;

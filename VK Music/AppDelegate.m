@@ -7,13 +7,17 @@
 //
 
 #import "AppDelegate.h"
-
-#import "SongsListViewController.h"
+#import "MusicPlayer.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
+
++(AppDelegate*) sharedInstance 
+{
+    return (AppDelegate*)[[UIApplication sharedApplication] delegate];
+}
 
 - (void)dealloc
 {
@@ -29,5 +33,32 @@
     return YES;
 }
 
+- (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent 
+{
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        
+        switch (receivedEvent.subtype) {
+                
+            case UIEventSubtypeRemoteControlPlay:
+                [[MusicPlayer sharedInstance] play];
+                break;
+                
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                [[MusicPlayer sharedInstance] pause];
+                break;
+                
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                 [[MusicPlayer sharedInstance] previous];
+                break;
+                
+            case UIEventSubtypeRemoteControlNextTrack:
+                [[MusicPlayer sharedInstance] next];
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
 
 @end

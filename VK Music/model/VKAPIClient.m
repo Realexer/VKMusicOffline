@@ -95,26 +95,23 @@ static NSString *_userAuthDataKey = @"userAuthData";
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    return [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@", audioItem.artist, audioItem.title]];
+    return [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.mp3", audioItem.artist, audioItem.title]];
 }
 
 
 -(BOOL) saveAudioFile:(NSData*) fileData ofAudioItem:(Audio *) audioItem 
 {
-    return [fileData writeToFile:[self getAudioFilePath:audioItem] atomically:YES];
-}
-
-
--(NSData*) getAudioFile:(Audio *) audioItem 
-{
-
+    return [fileData writeToFile:[self getAudioFilePath:audioItem] atomically:NO];
 }
 
 
 -(BOOL) deleteAudioFile:(Audio *) audioItem 
 {
-
+    NSError *error;
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    return [fileMgr removeItemAtPath:[self getAudioFilePath:audioItem] error:&error];
 }
+
 
 
 @end

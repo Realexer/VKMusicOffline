@@ -7,6 +7,7 @@
 //
 
 #import "VKMusicDB.h"
+#import "VKAPIClient.h"
 
 // singleton
 static VKMusicDB *sharedSingleton;
@@ -177,7 +178,12 @@ static VKMusicDB *sharedSingleton;
 
 -(BOOL) deleteAllMusic 
 {
-    return [self _deleteRecords:[self getAllMusic]];
+    NSArray *allMusic = [self getAllMusic];
+    for (Audio *audioItem in allMusic) {
+        [[VKAPIClient sharedInstance] deleteAudioFile:audioItem];
+    }
+    
+    return [self _deleteRecords:allMusic];
 }
 
 @end

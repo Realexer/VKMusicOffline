@@ -10,11 +10,13 @@
 #import <AVFoundation/AVAudioPlayer.h>
 #import <AVFoundation/AVAudioSession.h>
 #import <AVFoundation/AVPlayerItem.h>
+#import "Audio.h"
 
-
-@interface MusicPlayer : NSObject 
+@interface MusicPlayer : NSObject <AVAudioPlayerDelegate>
 {
     NSMutableArray *playlist;
+    AVAudioPlayer *audioPlayer;
+    int currentSong;
 }
 
 +(MusicPlayer*) sharedInstance;
@@ -24,9 +26,13 @@
 @property (nonatomic) int currentSong;
 
 -(void) setSongs:(NSArray *) songs;
+-(Audio *) getCurrentSong;
+-(NSURL *) getCurrentSongURL;
 
 -(void) play;
--(void) stop;
 -(void) pause;
+-(void) next;
+-(void) previous;
+
 
 @end

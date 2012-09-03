@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "VKAPIClient.h"
 
-@interface SongsListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface SongsListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> 
+{
+    NSArray *songsList;
+    VKAPIClient *apiClient;
+    UITableView *songsTable;
+}
 
 @property (nonatomic, retain) VKAPIClient *apiClient;
 @property (nonatomic, retain) IBOutlet UITableView *songsTable;

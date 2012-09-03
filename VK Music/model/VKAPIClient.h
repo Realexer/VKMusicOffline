@@ -25,5 +25,7 @@
 -(NSString *) getAudioFilePath:(Audio *) audioItem;
 //
 -(NSArray*) getUserMusic;
+//
+-(BOOL) deleteAudioFile:(Audio *) audioItem;
 
 @end
