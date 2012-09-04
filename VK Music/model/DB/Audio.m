@@ -2,7 +2,7 @@
 //  Audio.m
 //  VK Music
 //
-//  Created by Vitaliy Volokh on 8/30/12.
+//  Created by Vitaliy Volokh on 9/4/12.
 //  Copyright (c) 2012 Softheme. All rights reserved.
 //
 
@@ -13,11 +13,12 @@
 
 @dynamic aid;
 @dynamic artist;
+@dynamic downloaded;
 @dynamic duration;
 @dynamic lyrics_id;
 @dynamic owner_id;
 @dynamic title;
 @dynamic url;
-@dynamic downloaded;
+@dynamic lyrics;
 
 @end

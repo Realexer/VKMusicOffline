@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5D30D1FF15F513200057FE2E /* PlaybackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D30D1FE15F513200057FE2E /* PlaybackViewController.xib */; };
 		5DAEDDF015EFB34000753DA7 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEDDEF15EFB34000753DA7 /* FileDownloader.m */; };
-		5DAEDDF315EFCC5500753DA7 /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEDDF215EFCC5500753DA7 /* Audio.m */; };
 		5DB23CF215ED1623001DCE31 /* SongsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23CF015ED1623001DCE31 /* SongsListViewController.m */; };
 		5DB23CF315ED1623001DCE31 /* SongsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DB23CF115ED1623001DCE31 /* SongsListViewController.xib */; };
 		5DB23CF915ED162F001DCE31 /* VKAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB23CF615ED162F001DCE31 /* VKAPIClient.m */; };
@@ -33,6 +32,8 @@
 		5DC51C7D15ED0604004866B7 /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DC51C7C15ED0604004866B7 /* Window.xib */; };
 		5DC51C8C15ED0B94004866B7 /* SynchronizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC51C8A15ED0B94004866B7 /* SynchronizationViewController.m */; };
 		5DC51C8D15ED0B94004866B7 /* SynchronizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DC51C8B15ED0B94004866B7 /* SynchronizationViewController.xib */; };
+		5DC8AB6A15F5FAFA00EE620D /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8AB6915F5FAFA00EE620D /* FileManager.m */; };
+		5DC8AB6E15F6358C00EE620D /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8AB6D15F6358C00EE620D /* Audio.m */; };
 		5DF692E315F50A7500C1D1D5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF692E215F50A7500C1D1D5 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +41,6 @@
 		5D30D1FE15F513200057FE2E /* PlaybackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaybackViewController.xib; path = ViewControllers/PlaybackViewController.xib; sourceTree = "<group>"; };
 		5DAEDDEE15EFB34000753DA7 /* FileDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloader.h; sourceTree = "<group>"; };
 		5DAEDDEF15EFB34000753DA7 /* FileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloader.m; sourceTree = "<group>"; };
-		5DAEDDF115EFCC5500753DA7 /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Audio.h; path = DB/Audio.h; sourceTree = "<group>"; };
-		5DAEDDF215EFCC5500753DA7 /* Audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Audio.m; path = DB/Audio.m; sourceTree = "<group>"; };
 		5DB23CEF15ED1623001DCE31 /* SongsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongsListViewController.h; path = ViewControllers/SongsListViewController.h; sourceTree = "<group>"; };
 		5DB23CF015ED1623001DCE31 /* SongsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongsListViewController.m; path = ViewControllers/SongsListViewController.m; sourceTree = "<group>"; };
 		5DB23CF115ED1623001DCE31 /* SongsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongsListViewController.xib; path = ViewControllers/SongsListViewController.xib; sourceTree = "<group>"; };
@@ -79,6 +78,10 @@
 		5DC51C8915ED0B94004866B7 /* SynchronizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynchronizationViewController.h; path = ViewControllers/SynchronizationViewController.h; sourceTree = "<group>"; };
 		5DC51C8A15ED0B94004866B7 /* SynchronizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SynchronizationViewController.m; path = ViewControllers/SynchronizationViewController.m; sourceTree = "<group>"; };
 		5DC51C8B15ED0B94004866B7 /* SynchronizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SynchronizationViewController.xib; path = ViewControllers/SynchronizationViewController.xib; sourceTree = "<group>"; };
+		5DC8AB6815F5FAFA00EE620D /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
+		5DC8AB6915F5FAFA00EE620D /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		5DC8AB6C15F6358C00EE620D /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Audio.h; path = DB/Audio.h; sourceTree = "<group>"; };
+		5DC8AB6D15F6358C00EE620D /* Audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Audio.m; path = DB/Audio.m; sourceTree = "<group>"; };
 		5DF692E215F50A7500C1D1D5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -112,6 +115,8 @@
 				5DB23D1515ED1FD5001DCE31 /* VKMusicDB.m */,
 				5DAEDDEE15EFB34000753DA7 /* FileDownloader.h */,
 				5DAEDDEF15EFB34000753DA7 /* FileDownloader.m */,
+				5DC8AB6815F5FAFA00EE620D /* FileManager.h */,
+				5DC8AB6915F5FAFA00EE620D /* FileManager.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -130,9 +135,9 @@
 		5DB23D0A15ED1D31001DCE31 /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				5DAEDDF115EFCC5500753DA7 /* Audio.h */,
-				5DAEDDF215EFCC5500753DA7 /* Audio.m */,
 				5DB23D0C15ED1D4A001DCE31 /* Model.xcdatamodeld */,
+				5DC8AB6C15F6358C00EE620D /* Audio.h */,
+				5DC8AB6D15F6358C00EE620D /* Audio.m */,
 			);
 			name = DB;
 			sourceTree = "<group>";
@@ -299,9 +304,10 @@
 				5DB23D0E15ED1D4A001DCE31 /* Model.xcdatamodeld in Sources */,
 				5DB23D1615ED1FD5001DCE31 /* VKMusicDB.m in Sources */,
 				5DAEDDF015EFB34000753DA7 /* FileDownloader.m in Sources */,
-				5DAEDDF315EFCC5500753DA7 /* Audio.m in Sources */,
 				5DC477BA15F0EB1100DA8863 /* PlaybackViewController.m in Sources */,
 				5DC477BF15F0EB7D00DA8863 /* MusicPlayer.m in Sources */,
+				5DC8AB6A15F5FAFA00EE620D /* FileManager.m in Sources */,
+				5DC8AB6E15F6358C00EE620D /* Audio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

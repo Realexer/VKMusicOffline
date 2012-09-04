@@ -12,12 +12,12 @@
 @interface SongsListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> 
 {
     NSArray *songsList;
-    VKAPIClient *apiClient;
     UITableView *songsTable;
 }
 
-@property (nonatomic, retain) VKAPIClient *apiClient;
 @property (nonatomic, retain) IBOutlet UITableView *songsTable;
 @property (nonatomic, retain) NSArray *songsList;
+
+
 
 @end

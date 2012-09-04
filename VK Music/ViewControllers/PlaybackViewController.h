@@ -12,8 +12,9 @@
 
 @interface PlaybackViewController : UIViewController 
 {
-    
+    NSTimer *songTimingUpdating;
 }
+
 @property (nonatomic, retain) IBOutlet UIButton *playButton;
 @property (nonatomic, retain) IBOutlet UIButton *pauseButton;
 @property (nonatomic, retain) IBOutlet UILabel *songTitle;
@@ -21,6 +22,7 @@
 
 @property (nonatomic, retain) IBOutlet UISlider *volumeSlider;
 @property (nonatomic, retain) IBOutlet UISlider *seekingSlider;
+@property (nonatomic, retain) IBOutlet UITextView *lyricsTextView;
 
 
 -(IBAction) playSong:(UIButton *)sender;
@@ -29,5 +31,7 @@
 -(IBAction) previousSong:(UIButton *)sender;
 
 -(IBAction) seeking:(UISlider*)sender;
+
+-(void) updateSongTiming:(NSTimer *) timer;
 
 @end

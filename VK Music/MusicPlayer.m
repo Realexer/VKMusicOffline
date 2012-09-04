@@ -8,6 +8,7 @@
 
 #import "MusicPlayer.h"
 #import "VKAPIClient.h"
+#import "FileManager.h"
 #import "AppDelegate.h"
 #import "PlaybackViewController.h"
 #import <MediaPlayer/MPNowPlayingInfoCenter.h>
@@ -85,7 +86,7 @@ static MusicPlayer *musicSingleton;
     
     if(currentSong >= 0 && [playlist count] > currentSong) 
     {
-        NSString *path = [[VKAPIClient sharedInstance] getAudioFilePath:[self getCurrentSong]];
+        NSString *path = [[FileManager sharedInstance] getAudioFilePath:[self getCurrentSong]];
         currentSongURL = [NSURL fileURLWithPath:path];
     } 
     
@@ -95,7 +96,6 @@ static MusicPlayer *musicSingleton;
 
 -(void) play 
 {
-    [self showSongInfo];
     
     if([audioPlayer url] != nil && [audioPlayer isPlaying]) 
     {
@@ -110,7 +110,9 @@ static MusicPlayer *musicSingleton;
     
     if(playingError == nil) 
     {
+        [audioPlayer setDelegate:self];
         [audioPlayer play];
+        [self showSongInfo];
     } else {
         audioPlayer = nil;
         currentSong = 0;
@@ -157,8 +159,11 @@ static MusicPlayer *musicSingleton;
         
         if([currentViewController isKindOfClass:[PlaybackViewController class]]) 
         {
-            [((PlaybackViewController*) currentViewController).songTitle setText:[[self getCurrentSong] title]];
-            [((PlaybackViewController*) currentViewController).songArtist setText:[[self getCurrentSong] artist]];
+            ((PlaybackViewController*) currentViewController).songTitle.text = [[self getCurrentSong] title];
+            ((PlaybackViewController*) currentViewController).songArtist.text = [[self getCurrentSong] artist];
+            ((PlaybackViewController*) currentViewController).seekingSlider.minimumValue = 0;
+            ((PlaybackViewController*) currentViewController).seekingSlider.maximumValue = [[[MusicPlayer sharedInstance] audioPlayer] duration];
+            ((PlaybackViewController*) currentViewController).lyricsTextView.text = [[self getCurrentSong] lyrics];
         }
 
         NSArray *keys = [NSArray arrayWithObjects:MPMediaItemPropertyTitle, MPMediaItemPropertyArtist, nil];

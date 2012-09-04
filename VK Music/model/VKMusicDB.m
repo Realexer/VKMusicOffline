@@ -7,7 +7,7 @@
 //
 
 #import "VKMusicDB.h"
-#import "VKAPIClient.h"
+#import "FileManager.h"
 
 // singleton
 static VKMusicDB *sharedSingleton;
@@ -155,6 +155,14 @@ static VKMusicDB *sharedSingleton;
 }
 
 
+-(BOOL) setAudioLyrics:(NSString *) lyrics forAudio:(Audio *) audioItem
+{
+    [audioItem setLyrics:lyrics];
+    
+    return [[RHManagedObjectContextManager sharedInstance] commit];
+}
+
+
 
 -(NSArray *) getAllMusic 
 {
@@ -175,12 +183,33 @@ static VKMusicDB *sharedSingleton;
     return res;
 }
 
+-(NSArray *) getDownloadedMusic 
+{
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Audio class]) inManagedObjectContext:[self _getContext]];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"downloaded = %@", [NSNumber numberWithBool:YES]]];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"aid" ascending:NO];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    [sortDescriptors release];
+    [sortDescriptor release];
+
+    
+    
+    NSArray *res = [self _fetchRequest:fetchRequest];
+    [fetchRequest release];
+    return [res objectAtIndex:0];
+}
+
 
 -(BOOL) deleteAllMusic 
 {
     NSArray *allMusic = [self getAllMusic];
     for (Audio *audioItem in allMusic) {
-        [[VKAPIClient sharedInstance] deleteAudioFile:audioItem];
+        [[FileManager sharedInstance] deleteAudioFile:audioItem];
     }
     
     return [self _deleteRecords:allMusic];

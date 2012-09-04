@@ -9,6 +9,7 @@
 #import "FileDownloader.h"
 #import "VKMusicDB.h"
 #import "VKAPIClient.h"
+#import "FileManager.h"
 
 @implementation FileDownloader
 
@@ -48,7 +49,7 @@ tag, audio;
 {
     if(self.currentContentLength == self.expectedContentLength) 
     {
-        [[VKAPIClient sharedInstance] saveAudioFile:self.downloadedData ofAudioItem:self.audio];
+        [[FileManager sharedInstance] saveAudioFile:self.downloadedData ofAudioItem:self.audio];
         [[VKMusicDB sharedInstance] setAudioDwonloaded:self.audio];
         [delegate downloadingFinished:self];
     }
@@ -58,6 +59,7 @@ tag, audio;
 {
     [super dealloc];
     [downloadedData release];
+    [audio release];
 }
 
 

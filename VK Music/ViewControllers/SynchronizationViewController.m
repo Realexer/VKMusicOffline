@@ -24,6 +24,8 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Resynch" style:UIBarButtonItemStyleDone target:self action:@selector(resynch:)] autorelease];
+    
+    downloadingManagers = [[NSMutableArray alloc] init];
 }
 
 -(IBAction)resynch:(UIBarButtonItem *)sender 
@@ -43,17 +45,32 @@
     
     // using music that we currently have in DB
     self.musicList = [[VKMusicDB sharedInstance] getAllMusic];
+
+    for (Audio *audioItem in self.musicList) 
+    {
+        if(audioItem.lyrics == nil) 
+        {
+            NSString *lyrics = [[VKAPIClient sharedInstance] getAudioLyrics:audioItem];
+            [[VKMusicDB sharedInstance] setAudioLyrics:lyrics forAudio:audioItem];
+        }
+    }
+
     
     
     for (int i = 0; i < [self.musicList count]; i++) 
     {
         Audio *audioItem = [self.musicList objectAtIndex:i];
         
-        FileDownloader *downloader = [[FileDownloader alloc] init];
-        [downloader setDelegate:self];
-        [downloader setTag:i];
-        [downloader setAudio:audioItem];
-        [downloader downloadAudioFile];
+        if(audioItem.downloaded == NO) 
+        {
+        
+            FileDownloader *downloader = [[FileDownloader alloc] init];
+            [downloader setDelegate:self];
+            [downloader setTag:i];
+            [downloader setAudio:audioItem];
+            [downloader downloadAudioFile];
+            [downloadingManagers addObject:[downloader autorelease]];
+        }
     }
     
     [self.songsTable reloadData];
@@ -89,13 +106,13 @@
     UILabel *songName = [[UILabel alloc] initWithFrame:CGRectMake(5, 2, musicTableCell.frame.size.width - 10, 18)];
     songName.tag = 10;
     songName.font = [UIFont systemFontOfSize:14];
-    songName.textColor = [UIColor greenColor];
+    songName.textColor = [UIColor colorWithRed:153.0/255.0 green:51.0/255.0 blue:0 alpha:1.0];
     songName.text = [NSString stringWithFormat:@"%@ - %@", audioItem.artist, audioItem.title];
     [musicTableCell.contentView addSubview:songName];
     
     if([audioItem.downloaded boolValue] == NO) 
     {
-        songName.textColor = [UIColor blueColor];
+        songName.textColor = [UIColor colorWithRed:65.0/255.0 green:103.0/255.0 blue:187.0/255.0 alpha:1.0];
         
         UIProgressView *progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
         progressView.frame = CGRectMake(0, 25, musicTableCell.frame.size.width - 10, 10);
@@ -127,17 +144,17 @@
     UITableViewCell *musicCell = [self.songsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:client.tag inSection:0]];
     if(musicCell) {
         UILabel *songName = (UILabel *) [musicCell viewWithTag:10];
-        songName.textColor = [UIColor greenColor];
+        songName.textColor = [UIColor colorWithRed:153.0/255.0 green:51.0/255.0 blue:0 alpha:1.0];
         
         [[musicCell viewWithTag:5] removeFromSuperview];
     }    
     
-    [client release];
+    [downloadingManagers removeObject:client];
 }
 
 -(void) downloadingFailed:(FileDownloader*) client 
 {
-    [client autorelease];
+    [downloadingManagers removeObject:client];
 }    
 
 - (void)viewDidUnload
@@ -148,6 +165,15 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(void) dealloc 
+{
+    [super dealloc];
+    [downloadingManagers removeAllObjects];
+    [downloadingManagers release];
+    [songsTable release];
+    [musicList release];
 }
 
 @end

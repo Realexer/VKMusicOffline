@@ -24,7 +24,7 @@
 
 @interface FileDownloader : NSObject<NSURLConnectionDelegate>
 
-@property (retain, nonatomic) id<FileDownloaderDelegate> delegate;
+@property (retain, nonatomic) NSObject<FileDownloaderDelegate>* delegate;
 @property (nonatomic) long long expectedContentLength;
 @property (nonatomic) long long currentContentLength;
 @property (nonatomic, retain) NSMutableData *downloadedData;

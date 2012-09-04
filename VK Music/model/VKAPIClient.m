@@ -77,6 +77,8 @@ static NSString *_userAuthDataKey = @"userAuthData";
             // alarm
             return nil;
         }
+        
+        [request autorelease];
 
     }
     @catch (NSException *exception) {
@@ -87,31 +89,64 @@ static NSString *_userAuthDataKey = @"userAuthData";
         
     }
     
+    
     return [musicList autorelease];    
 }
 
 
--(NSString *) getAudioFilePath:(Audio *) audioItem 
+
+-(NSString*) getAudioLyrics:(Audio*) audioItem 
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    return [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.mp3", audioItem.artist, audioItem.title]];
+    if([self getUserAuthData] == nil) {
+        // alarm
+        return nil;
+    }
+    
+    if(!audioItem.lyrics_id) {
+        return nil;
+    }
+
+    NSString *audioLyrics;
+    
+    @try {
+        
+        NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.vk.com/method/audio.getLyrics.xml?lyrics_id=%@&access_token=%@", audioItem.lyrics_id, [[self getUserAuthData] objectForKey:@"access_token"]]];
+        
+        NSURLRequest* request = [[NSURLRequest alloc] initWithURL:url];
+        NSURLResponse* response = nil;
+        NSError* error = nil;
+        
+        NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        
+        if(error) {
+            // alarm
+            return nil;
+        }
+        
+        if(!responseData) {
+            return nil;
+        }
+        
+        NSDictionary *result = [XMLReaderDef dictionaryForXMLData:responseData error:&error];
+        audioLyrics = [[NSString alloc] initWithString:[[[[result objectForKey:@"response"] objectForKey:@"lyrics"] objectForKey:@"text"] objectForKey:@"_content"]];
+        
+        if(error) {
+            // alarm
+            return nil;
+        }
+        [request autorelease];
+        
+    }
+    @catch (NSException *exception) {
+        // alarm
+        return nil;
+    }
+    @finally {
+        
+    }
+    
+    return audioLyrics;
+    
 }
-
-
--(BOOL) saveAudioFile:(NSData*) fileData ofAudioItem:(Audio *) audioItem 
-{
-    return [fileData writeToFile:[self getAudioFilePath:audioItem] atomically:NO];
-}
-
-
--(BOOL) deleteAudioFile:(Audio *) audioItem 
-{
-    NSError *error;
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
-    return [fileMgr removeItemAtPath:[self getAudioFilePath:audioItem] error:&error];
-}
-
-
 
 @end

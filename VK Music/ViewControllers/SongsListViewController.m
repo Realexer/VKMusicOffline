@@ -20,21 +20,18 @@
 @synthesize songsList, songsTable;
 
 
-@synthesize apiClient;
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:@selector(authorize:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sync" style:UIBarButtonItemStyleBordered target:self action:@selector(synchronize:)];
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:@selector(authorize:)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Sync" style:UIBarButtonItemStyleBordered target:self action:@selector(synchronize:)] autorelease];
     
     if([[VKAPIClient sharedInstance] getUserAuthData] == nil) 
     {
-        [self.navigationController pushViewController:[[AuthorizationViewController alloc] init] animated:YES];
-    }    
-    
+        [self.navigationController pushViewController:[[[AuthorizationViewController alloc] init] autorelease] animated:YES];
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated 
@@ -67,11 +64,21 @@
         [cellSubview removeFromSuperview];
     }
     
-    UILabel *songName = [[UILabel alloc] initWithFrame:CGRectMake(5, 2, musicTableCell.frame.size.width - 10, 18)];
-    songName.font = [UIFont systemFontOfSize:14];
-    songName.textColor = [UIColor greenColor];
-    songName.text = [NSString stringWithFormat:@"%@ - %@", audioItem.artist, audioItem.title];
-    [musicTableCell.contentView addSubview:songName];
+    UILabel *songTitle = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, musicTableCell.frame.size.width - 10, 18)];
+    songTitle.font = [UIFont boldSystemFontOfSize:16];
+    songTitle.textColor = [UIColor colorWithRed:153.0/255.0 green:51.0/255.0 blue:0 alpha:1.0];
+    songTitle.text = audioItem.title;
+    songTitle.backgroundColor = [UIColor clearColor];
+    [musicTableCell.contentView addSubview:songTitle];
+    [songTitle release];
+    
+    UILabel *songArtist = [[UILabel alloc] initWithFrame:CGRectMake(5, 23, musicTableCell.frame.size.width - 10, 14)];
+    songArtist.font = [UIFont systemFontOfSize:12];
+    songArtist.textColor = [UIColor colorWithRed:153.0/255.0 green:51.0/255.0 blue:0 alpha:1.0];
+    songArtist.text = audioItem.artist;
+    songArtist.backgroundColor = [UIColor clearColor];
+    [musicTableCell.contentView addSubview:songArtist];
+    [songArtist release];
         
     return [musicTableCell autorelease];
 }
@@ -80,9 +87,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     [[MusicPlayer sharedInstance] setSongs:self.songsList];
-    [self.navigationController pushViewController:[[PlaybackViewController alloc] init] animated:YES];
     [[MusicPlayer sharedInstance] setCurrentSong:indexPath.row];
     [[MusicPlayer sharedInstance] play];
+    [self.navigationController pushViewController:[[PlaybackViewController alloc] init] animated:YES];
 }
 
 
@@ -99,6 +106,8 @@
 -(void) dealloc 
 {
     [super dealloc];
+    [songsTable release];
+    [songsList release];
 }
 
 
@@ -111,6 +120,5 @@
 {
     [self.navigationController pushViewController:[[AuthorizationViewController alloc] init] animated:YES];
 }
-
 
 @end

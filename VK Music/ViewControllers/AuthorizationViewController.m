@@ -50,8 +50,15 @@
         if (textRange.location != NSNotFound) {
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ooops! something gonna wrong..." message:@"Check your internet connection and try again!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             [alert show];
+            [alert release];
         }
     }
+}
+
+-(void) dealloc 
+{
+    [super dealloc];
+    [webView release];
 }
 
 @end

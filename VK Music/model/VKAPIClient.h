@@ -14,18 +14,13 @@
 
 // 
 +(VKAPIClient *) sharedInstance;
-
 //
 -(void) saveUserAuthData:(NSDictionary *) user;
 //
 -(NSDictionary*) getUserAuthData;
 //
--(BOOL) saveAudioFile:(NSData*) fileData ofAudioItem:(Audio *) audioItem;
-//
--(NSString *) getAudioFilePath:(Audio *) audioItem;
-//
 -(NSArray*) getUserMusic;
 //
--(BOOL) deleteAudioFile:(Audio *) audioItem;
+-(NSString*) getAudioLyrics:(Audio*) audioItem;
 
 @end

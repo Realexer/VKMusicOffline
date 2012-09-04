@@ -249,10 +249,10 @@ static RHManagedObjectContextManager *sharedInstance = nil;
  Returns the persistent store coordinator for the application.
  If the coordinator doesn't already exist, it is created and the application's store added to it.
  */
--(NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    
-	if (persistentStoreCoordinator == nil) {
-		
+-(NSPersistentStoreCoordinator *)persistentStoreCoordinator 
+{    
+	if (persistentStoreCoordinator == nil) 
+    {	
 		// This next block is useful when the store is initialized for the first time.  If the DB doesn't already
 		// exist and a copy of the db (with the same name) exists in the bundle, it'll be copied over and used.  This
 		// is useful for the initial seeding of data in the app.
@@ -296,8 +296,10 @@ static RHManagedObjectContextManager *sharedInstance = nil;
 			 Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
 			 
 			 */
+            [[NSFileManager defaultManager] removeItemAtPath:[self storePath] error:nil] ;
 			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-			abort();
+            return [self persistentStoreCoordinator];
+			//abort();
 		}    
     }
 	

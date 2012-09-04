@@ -28,6 +28,7 @@
 -(void) setSongs:(NSArray *) songs;
 -(Audio *) getCurrentSong;
 -(NSURL *) getCurrentSongURL;
+-(void) showSongInfo;
 
 -(void) play;
 -(void) pause;
