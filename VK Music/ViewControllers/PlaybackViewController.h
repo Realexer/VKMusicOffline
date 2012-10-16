@@ -13,6 +13,7 @@
 @interface PlaybackViewController : UIViewController 
 {
     NSTimer *songTimingUpdating;
+    BOOL seeking;
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *playButton;
@@ -30,6 +31,8 @@
 -(IBAction) nextSong:(UIButton *)sender;
 -(IBAction) previousSong:(UIButton *)sender;
 
+-(IBAction) seekingStarted:(id)sender;
+-(IBAction) seekingEnded:(id)sender;
 -(IBAction) seeking:(UISlider*)sender;
 
 -(void) updateSongTiming:(NSTimer *) timer;

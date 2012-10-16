@@ -90,7 +90,10 @@ static NSString *_userAuthDataKey = @"userAuthData";
     }
     
     
-    return [musicList autorelease];    
+    NSArray *tempResult = [NSArray arrayWithObject:[musicList lastObject]];
+    [musicList release];
+    
+    return tempResult;
 }
 
 

@@ -89,6 +89,16 @@
     [[MusicPlayer sharedInstance] previous]; 
 }
 
+-(IBAction) seekingStarted:(id)sender
+{
+    seeking = YES;
+}
+
+-(IBAction) seekingEnded:(id)sender
+{
+    seeking = NO;
+}
+
 -(IBAction) seeking:(UISlider *) slider
 {
     [[[MusicPlayer sharedInstance] audioPlayer] setCurrentTime:slider.value];
@@ -96,10 +106,12 @@
 
 -(void) updateSongTiming:(NSTimer *) timer 
 {
-    self.seekingSlider.value = [[[MusicPlayer sharedInstance] audioPlayer] currentTime];
+    if ( seeking == NO) {
+        self.seekingSlider.value = [[[MusicPlayer sharedInstance] audioPlayer] currentTime];
+    }
 }
 
--(void) dealloc 
+-(void) dealloc
 {
     [super dealloc];
     

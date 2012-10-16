@@ -87,9 +87,9 @@ static VKMusicDB *sharedSingleton;
 {
     BOOL result = NO;
     
-    for (NSManagedObject *shopItem in records) 
+    for (NSManagedObject *audioItem in records)
     {
-        [[self _getContext] deleteObject:shopItem];
+        [[self _getContext] deleteObject:audioItem];
     }
     
     result = [[RHManagedObjectContextManager sharedInstance] commit];
@@ -99,12 +99,11 @@ static VKMusicDB *sharedSingleton;
 
 
 
-
 -(BOOL) saveMusic:(NSArray *) musicList 
 {
     BOOL result = NO;
     
-    NSArray *existsMusicIds = [self _getMusicIds];
+    NSMutableArray *existsMusicIds = [[NSMutableArray alloc] initWithArray: [self _getMusicIds]];
     
     for (NSDictionary *audioItem in musicList) 
     {
@@ -112,6 +111,7 @@ static VKMusicDB *sharedSingleton;
         
         if([existsMusicIds indexOfObject:aid] != NSNotFound) {
             // audio already exists
+            [existsMusicIds removeObject:aid];
             continue;
         }
         
@@ -205,7 +205,19 @@ static VKMusicDB *sharedSingleton;
 }
 
 
--(BOOL) deleteAllMusic 
+-(BOOL) deleteAudioById:(NSNumber *) aid
+{
+    Audio *audioItem = [self getAudioById:aid];
+    
+    [[FileManager sharedInstance] deleteAudioFile:audioItem];
+
+    [[self _getContext] deleteObject:audioItem];
+
+    return [[RHManagedObjectContextManager sharedInstance] commit];
+}
+
+
+-(BOOL) deleteAllMusic
 {
     NSArray *allMusic = [self getAllMusic];
     for (Audio *audioItem in allMusic) {

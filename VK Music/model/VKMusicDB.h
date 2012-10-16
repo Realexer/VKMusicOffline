@@ -18,6 +18,7 @@
 -(NSArray *) getAllMusic;
 -(NSArray *) getDownloadedMusic;
 -(BOOL) deleteAllMusic;
+-(BOOL) deleteAudioById:(NSNumber *) aid;
 -(BOOL) setAudioDwonloaded:(Audio*) audioItem;
 -(Audio *) getAudioById:(NSNumber*) aid;
 -(BOOL) setAudioLyrics:(NSString *) lyrics forAudio:(Audio *) audioItem;
