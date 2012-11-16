@@ -17,4 +17,7 @@
 @property (nonatomic, retain) IBOutlet UITableView *songsTable;
 @property (nonatomic, retain) NSArray *musicList;
 
+@property (nonatomic, retain) IBOutlet UIView *noAccessView;
+-(IBAction) getAccess:(id)sender;
+
 @end

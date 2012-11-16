@@ -12,11 +12,16 @@
 #import <AVFoundation/AVPlayerItem.h>
 #import "Audio.h"
 
-@interface MusicPlayer : NSObject <AVAudioPlayerDelegate>
+
+
+@interface MusicPlayer : NSObject <AVAudioPlayerDelegate, AVAudioSessionDelegate>
 {
     NSMutableArray *playlist;
     AVAudioPlayer *audioPlayer;
     int currentSong;
+    
+    NSTimer *seekingTimer;
+    float seekingStep;
 }
 
 +(MusicPlayer*) sharedInstance;
@@ -31,9 +36,13 @@
 -(void) showSongInfo;
 
 -(void) play;
--(void) pause;
+-(void) togglePlay;
 -(void) next;
 -(void) previous;
 
+-(void) startSeekingForward;
+-(void) startSeekingBackward;
+-(void) stopSeekingForward;
+-(void) stopSeekingBackward;
 
 @end

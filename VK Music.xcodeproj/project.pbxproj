@@ -35,6 +35,7 @@
 		5DC8AB6A15F5FAFA00EE620D /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8AB6915F5FAFA00EE620D /* FileManager.m */; };
 		5DC8AB6E15F6358C00EE620D /* Audio.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8AB6D15F6358C00EE620D /* Audio.m */; };
 		5DF692E315F50A7500C1D1D5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF692E215F50A7500C1D1D5 /* MediaPlayer.framework */; };
+		C391A48516562F970020C6D5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C391A48416562F970020C6D5 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		5DC8AB6C15F6358C00EE620D /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Audio.h; path = DB/Audio.h; sourceTree = "<group>"; };
 		5DC8AB6D15F6358C00EE620D /* Audio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Audio.m; path = DB/Audio.m; sourceTree = "<group>"; };
 		5DF692E215F50A7500C1D1D5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C391A48416562F970020C6D5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C391A48516562F970020C6D5 /* AudioToolbox.framework in Frameworks */,
 				5DF692E315F50A7500C1D1D5 /* MediaPlayer.framework in Frameworks */,
 				5DB23D1015ED1DBC001DCE31 /* CoreData.framework in Frameworks */,
 				5DC51C6715EB7C77004866B7 /* AVFoundation.framework in Frameworks */,
@@ -162,6 +165,7 @@
 		5DC51C4815EB7A21004866B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C391A48416562F970020C6D5 /* AudioToolbox.framework */,
 				5DF692E215F50A7500C1D1D5 /* MediaPlayer.framework */,
 				5DB23D0F15ED1DBC001DCE31 /* CoreData.framework */,
 				5DC51C6615EB7C77004866B7 /* AVFoundation.framework */,

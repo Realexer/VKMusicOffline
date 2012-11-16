@@ -10,7 +10,7 @@
 #import "AuthorizationViewController.h"
 #import "SynchronizationViewController.h"
 #import "VKMusicDB.h"
-#import "PlaybackViewController.h"
+#import "AppDelegate.h"
 
 @interface SongsListViewController ()
 
@@ -25,8 +25,9 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:@selector(authorize:)] autorelease];
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Sync" style:UIBarButtonItemStyleBordered target:self action:@selector(synchronize:)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@">" style:UIBarButtonItemStyleBordered target:self action:@selector(nowPlaying:)] autorelease];
+    
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Sync" style:UIBarButtonItemStyleBordered target:self action:@selector(synchronize:)] autorelease];
     
     if([[VKAPIClient sharedInstance] getUserAuthData] == nil) 
     {
@@ -41,7 +42,7 @@
         songsList = nil;
     }
     
-    self.songsList = [[VKMusicDB sharedInstance] getAllMusic];
+    self.songsList = [[VKMusicDB sharedInstance] getDownloadedMusic];
     
     [self.songsTable reloadData];
 }
@@ -89,7 +90,7 @@
     [[MusicPlayer sharedInstance] setSongs:self.songsList];
     [[MusicPlayer sharedInstance] setCurrentSong:indexPath.row];
     [[MusicPlayer sharedInstance] play];
-    [self.navigationController pushViewController:[[PlaybackViewController alloc] init] animated:YES];
+    [self.navigationController pushViewController:[[AppDelegate sharedInstance] playbackController] animated:YES];
 }
 
 
@@ -116,9 +117,9 @@
     [self.navigationController pushViewController:[[SynchronizationViewController alloc] init] animated:YES];
 }
 
--(IBAction) authorize:(id)sender 
+-(IBAction) nowPlaying:(id)sender
 {
-    [self.navigationController pushViewController:[[AuthorizationViewController alloc] init] animated:YES];
+    [self.navigationController pushViewController:[[AppDelegate sharedInstance] playbackController] animated:YES];
 }
 
 @end

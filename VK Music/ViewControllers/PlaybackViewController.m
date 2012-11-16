@@ -20,14 +20,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     
     MPVolumeView *myVolumeView = [[MPVolumeView alloc] initWithFrame:self.volumeSlider.frame];
-
-    for (UIView *view in [myVolumeView subviews]) 
+    
+    for (UIView *view in [myVolumeView subviews])
     {
         if ([[[view class] description] isEqualToString:@"MPVolumeSlider"]) {
-
+            
             [(UISlider *)view setThumbTintColor:self.seekingSlider.thumbTintColor];
             [(UISlider *)view setMinimumTrackTintColor:self.seekingSlider.minimumTrackTintColor];
             [(UISlider *)view setMaximumTrackTintColor:self.seekingSlider.maximumTrackTintColor];
@@ -37,6 +36,12 @@
     [self.view addSubview: myVolumeView];
     [myVolumeView release];
     [volumeSlider removeFromSuperview];
+}
+
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
     
     if([[[MusicPlayer sharedInstance] audioPlayer] isPlaying]) {
         self.playButton.hidden = YES;
@@ -68,7 +73,7 @@
 
 -(IBAction) pauseSong:(UIButton *)sender
 {
-    [[MusicPlayer sharedInstance] pause]; 
+    [[MusicPlayer sharedInstance] togglePlay]; 
     
     if([[[MusicPlayer sharedInstance] audioPlayer] isPlaying]){
         [playButton setHidden:YES];

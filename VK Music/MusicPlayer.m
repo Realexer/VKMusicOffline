@@ -13,6 +13,27 @@
 #import "PlaybackViewController.h"
 #import <MediaPlayer/MPNowPlayingInfoCenter.h>
 #import <MediaPlayer/MPMediaItem.h>
+#import <AudioToolbox/AudioServices.h>
+
+
+void audioRouteChangeListenerCallback
+(void *inUserData, AudioSessionPropertyID inPropertyID, UInt32 inPropertyValueSize, const void *inPropertyValue )
+{
+    if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return;
+ 
+        CFDictionaryRef routeChangeDictionary = inPropertyValue;
+        CFNumberRef routeChangeReasonRef =
+        CFDictionaryGetValue (routeChangeDictionary, CFSTR (kAudioSession_AudioRouteChangeKey_Reason));
+        
+        SInt32 routeChangeReason;
+        CFNumberGetValue (routeChangeReasonRef, kCFNumberSInt32Type, &routeChangeReason);
+        
+        if (routeChangeReason == kAudioSessionRouteChangeReason_OldDeviceUnavailable)
+        {
+            // our case
+            [[MusicPlayer sharedInstance] togglePlay];
+        }
+}
 
 
 // singleton
@@ -53,6 +74,13 @@ static MusicPlayer *musicSingleton;
     [[AVAudioSession sharedInstance] setActive: YES error: nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 
+    seekingStep = 0.0;
+    
+    // audio route changes
+    AudioSessionPropertyID routeChangeID = kAudioSessionProperty_AudioRouteChange;
+    AudioSessionAddPropertyListener(routeChangeID, audioRouteChangeListenerCallback, nil);
+
+    
     return self;
 }
 
@@ -111,6 +139,7 @@ static MusicPlayer *musicSingleton;
     if(playingError == nil) 
     {
         [audioPlayer setDelegate:self];
+        [audioPlayer setEnableRate:YES];
         [audioPlayer play];
         [self showSongInfo];
     } else {
@@ -131,7 +160,7 @@ static MusicPlayer *musicSingleton;
     [self play];
 }
 
--(void) pause 
+-(void) togglePlay 
 {
     if([audioPlayer isPlaying]) {
         [audioPlayer pause];
@@ -146,25 +175,82 @@ static MusicPlayer *musicSingleton;
 
 }
 
+-(void) _increaseSeekingStep:(NSTimer *) timer
+{
+//    int maxStep = 30;
+//    int minStep = -30;
+    
+    if([[timer userInfo] boolValue]) {
+        seekingStep += 0.5;
+    } else {
+        seekingStep -= 0.5;
+    }
+    
+    //seekingStep = MAX(MIN(seekingStep, maxStep), minStep);
+    
+    [self _seeking];
+}
+
+-(void) _startSeeking:(BOOL) direction
+{
+    [audioPlayer setRate:1.5];
+    seekingTimer = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(_increaseSeekingStep:) userInfo:[NSNumber numberWithBool:direction] repeats:YES];
+}
+
+-(void) _stopSeeking
+{
+    [seekingTimer invalidate];
+    seekingTimer = nil;
+
+    seekingStep = 0.0;
+    [audioPlayer setRate:1.0];
+    //[self _seeking];
+}
+
+-(void) _seeking
+{
+    [audioPlayer setCurrentTime:[audioPlayer currentTime] + seekingStep];
+    NSLog(@"Seeking step equils: %f", seekingStep);
+}
+
+
+-(void) startSeekingForward
+{
+    [self _startSeeking:YES];
+}
+
+-(void) startSeekingBackward
+{
+    [self _startSeeking:NO];
+}
+
+-(void) stopSeekingForward
+{
+    [self _stopSeeking];
+}
+
+-(void) stopSeekingBackward
+{
+    [self _stopSeeking];
+}
+
+
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag 
 {
     [self next];
 }
 
+
 -(void) showSongInfo
 {
     if([self getCurrentSong]) 
     {
-        UIViewController *currentViewController = [[[AppDelegate sharedInstance] navigationController] topViewController];
-        
-        if([currentViewController isKindOfClass:[PlaybackViewController class]]) 
-        {
-            ((PlaybackViewController*) currentViewController).songTitle.text = [[self getCurrentSong] title];
-            ((PlaybackViewController*) currentViewController).songArtist.text = [[self getCurrentSong] artist];
-            ((PlaybackViewController*) currentViewController).seekingSlider.minimumValue = 0;
-            ((PlaybackViewController*) currentViewController).seekingSlider.maximumValue = [[[MusicPlayer sharedInstance] audioPlayer] duration];
-            ((PlaybackViewController*) currentViewController).lyricsTextView.text = [[self getCurrentSong] lyrics];
-        }
+     
+        [[AppDelegate sharedInstance] playbackController].songTitle.text = [[self getCurrentSong] title];
+        [[AppDelegate sharedInstance] playbackController].songArtist.text = [[self getCurrentSong] artist];
+        [[AppDelegate sharedInstance] playbackController].seekingSlider.minimumValue = 0;
+        [[AppDelegate sharedInstance] playbackController].seekingSlider.maximumValue = [[[MusicPlayer sharedInstance] audioPlayer] duration];
+        [[AppDelegate sharedInstance] playbackController].lyricsTextView.text = [[self getCurrentSong] lyrics];
 
         NSArray *keys = [NSArray arrayWithObjects:MPMediaItemPropertyTitle, MPMediaItemPropertyArtist, nil];
         NSArray *values = [NSArray arrayWithObjects:[[self getCurrentSong] title], [[self getCurrentSong] artist],  nil];
@@ -172,6 +258,17 @@ static MusicPlayer *musicSingleton;
         [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:mediaInfo];
     }
 
+}
+
+#pragma makr AVAudioSessionDelegate
+- (void)beginInterruption
+{
+    [audioPlayer pause];
+}
+
+- (void)endInterruption
+{
+    [audioPlayer play];
 }
 
 

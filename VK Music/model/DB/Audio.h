@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString * duration;
 @property (nonatomic, retain) NSNumber * lyrics_id;
 @property (nonatomic, retain) NSNumber * owner_id;
+@property (nonatomic, retain) NSNumber * position;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSString * lyrics;

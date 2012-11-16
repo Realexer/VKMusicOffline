@@ -105,12 +105,15 @@ static VKMusicDB *sharedSingleton;
     
     NSMutableArray *existsMusicIds = [[NSMutableArray alloc] initWithArray: [self _getMusicIds]];
     
-    for (NSDictionary *audioItem in musicList) 
+    for ( int i = 0; i < [musicList count]; i++)
     {
+        NSDictionary *audioItem = [musicList objectAtIndex:i];
+        
         NSNumber *aid = [NSNumber numberWithInt:[[[audioItem objectForKey:@"aid"] valueForKey:@"_content"] intValue]];
         
         if([existsMusicIds indexOfObject:aid] != NSNotFound) {
             // audio already exists
+            [self setAudioPostion:[NSNumber numberWithInt:i] forAudio:[self getAudioById:aid]];
             [existsMusicIds removeObject:aid];
             continue;
         }
@@ -122,11 +125,20 @@ static VKMusicDB *sharedSingleton;
         newAudio.duration = [[audioItem objectForKey:@"duration"] valueForKey:@"_content"];
         newAudio.lyrics_id = [NSNumber numberWithInt:[[[audioItem objectForKey:@"lyrics_id"] valueForKey:@"_content"] intValue]];
         newAudio.owner_id = [NSNumber numberWithInt:[[[audioItem objectForKey:@"owner_id"] valueForKey:@"_content"] intValue]];
+        newAudio.position = [NSNumber numberWithInt:i];
         newAudio.title = [[audioItem objectForKey:@"title"] valueForKey:@"_content"];
         newAudio.url = [[audioItem objectForKey:@"url"] valueForKey:@"_content"];
     }
     
     result = [[RHManagedObjectContextManager sharedInstance] commit];
+    
+    if(result)
+    {
+        for (NSNumber *removedSong in existsMusicIds)
+        {
+            [self deleteAudioById:removedSong];
+        }
+    }
     
     return result;
 }
@@ -154,6 +166,13 @@ static VKMusicDB *sharedSingleton;
     return [[RHManagedObjectContextManager sharedInstance] commit];
 }
 
+-(BOOL) setAudioPostion:(NSNumber*) position forAudio:(Audio *) audioItem
+{
+    [audioItem setPosition:position];
+    
+    return [[RHManagedObjectContextManager sharedInstance] commit];
+}
+
 
 -(BOOL) setAudioLyrics:(NSString *) lyrics forAudio:(Audio *) audioItem
 {
@@ -171,7 +190,7 @@ static VKMusicDB *sharedSingleton;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entity];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"aid" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"position" ascending:YES];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     [fetchRequest setSortDescriptors:sortDescriptors];
     [sortDescriptors release];
@@ -191,7 +210,7 @@ static VKMusicDB *sharedSingleton;
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"downloaded = %@", [NSNumber numberWithBool:YES]]];
     [fetchRequest setEntity:entity];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"aid" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"position" ascending:YES];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     [fetchRequest setSortDescriptors:sortDescriptors];
     [sortDescriptors release];
@@ -201,7 +220,7 @@ static VKMusicDB *sharedSingleton;
     
     NSArray *res = [self _fetchRequest:fetchRequest];
     [fetchRequest release];
-    return [res objectAtIndex:0];
+    return res;
 }
 
 

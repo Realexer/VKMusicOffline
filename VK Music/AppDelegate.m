@@ -13,6 +13,7 @@
 
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
+@synthesize playbackController;
 
 +(AppDelegate*) sharedInstance 
 {
@@ -29,6 +30,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self.window makeKeyAndVisible];
+    
+    playbackController = [[PlaybackViewController alloc] init];
 
     return YES;
 }
@@ -44,7 +47,7 @@
                 break;
                 
             case UIEventSubtypeRemoteControlTogglePlayPause:
-                [[MusicPlayer sharedInstance] pause];
+                [[MusicPlayer sharedInstance] togglePlay];
                 break;
                 
             case UIEventSubtypeRemoteControlPreviousTrack:
@@ -53,6 +56,22 @@
                 
             case UIEventSubtypeRemoteControlNextTrack:
                 [[MusicPlayer sharedInstance] next];
+                break;
+                
+            case UIEventSubtypeRemoteControlBeginSeekingForward:
+                [[MusicPlayer sharedInstance] startSeekingForward];
+                break;
+                
+            case UIEventSubtypeRemoteControlBeginSeekingBackward:
+                [[MusicPlayer sharedInstance] startSeekingBackward];
+                break;
+                
+            case UIEventSubtypeRemoteControlEndSeekingForward:
+                [[MusicPlayer sharedInstance] stopSeekingForward];
+                break;
+                
+            case UIEventSubtypeRemoteControlEndSeekingBackward:
+                [[MusicPlayer sharedInstance] stopSeekingBackward];
                 break;
                 
             default:

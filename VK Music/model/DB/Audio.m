@@ -17,6 +17,7 @@
 @dynamic duration;
 @dynamic lyrics_id;
 @dynamic owner_id;
+@dynamic position;
 @dynamic title;
 @dynamic url;
 @dynamic lyrics;

@@ -71,7 +71,19 @@ static NSString *_userAuthDataKey = @"userAuthData";
         }
         
         NSDictionary *result = [XMLReaderDef dictionaryForXMLData:responseData error:&error];
-        [musicList addObjectsFromArray:[[result objectForKey:@"response"] objectForKey:@"audio"]];
+        NSDictionary *responseAudio = [result objectForKey:@"response"];
+        
+//        if([responseAudio objectForKey:@"audio"] == nil)
+//        {
+//            @throw [NSException exceptionWithName:@"Bad response" reason:@"Response doesn't contain audio. Probably bad authorization" userInfo:responseAudio];
+//        }
+        
+        if([responseAudio objectForKey:@"audio"] == nil)
+        {
+            return nil;
+        }
+        
+        [musicList addObjectsFromArray:[responseAudio objectForKey:@"audio"]];
         
         if(error) {
             // alarm
@@ -89,11 +101,12 @@ static NSString *_userAuthDataKey = @"userAuthData";
         
     }
     
+    return [musicList autorelease];
     
-    NSArray *tempResult = [NSArray arrayWithObject:[musicList lastObject]];
-    [musicList release];
-    
-    return tempResult;
+//    NSArray *tempResult = [NSArray arrayWithObject:[musicList lastObject]];
+//    [musicList release];
+//    
+//    return tempResult;
 }
 
 

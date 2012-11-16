@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlaybackViewController.h"
 
 @class SongsListViewController;
 
@@ -17,5 +18,6 @@
 @property (retain, nonatomic) IBOutlet UIWindow *window;
 
 @property (retain, nonatomic) IBOutlet UINavigationController *navigationController;
+@property (retain, nonatomic) PlaybackViewController *playbackController;
 
 @end

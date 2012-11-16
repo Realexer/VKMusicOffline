@@ -7,6 +7,7 @@
 //
 
 #import "SynchronizationViewController.h"
+#import "AuthorizationViewController.h"
 #import "VKMusicDB.h"
 #import "VKAPIClient.h"
 
@@ -18,14 +19,20 @@
 
 @synthesize songsTable;
 @synthesize musicList;
-
+@synthesize noAccessView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Resynch" style:UIBarButtonItemStyleDone target:self action:@selector(resynch:)] autorelease];
     
     downloadingManagers = [[NSMutableArray alloc] init];
+}
+
+-(IBAction) getAccess:(id)sender
+{
+    [self.navigationController pushViewController:[[[AuthorizationViewController alloc] init] autorelease] animated:YES];
 }
 
 -(IBAction)resynch:(UIBarButtonItem *)sender 
@@ -37,7 +44,23 @@
 -(void) synch 
 {
     //[[VKMusicDB sharedInstance] deleteAllMusic];
-    NSArray *userMusic = [[VKAPIClient sharedInstance] getUserMusic];
+    
+    NSArray *userMusic = nil;
+//    @try {
+//         userMusic = [[VKAPIClient sharedInstance] getUserMusic];
+//    } @catch (NSException *exeption) {
+//        [self.navigationController pushViewController:[[[AuthorizationViewController alloc] init] autorelease] animated:YES];
+//        return;
+//    }
+    
+    userMusic = [[VKAPIClient sharedInstance] getUserMusic];
+    
+    if(userMusic == nil)
+    {
+        noAccessView.hidden = NO;
+        return;
+    }
+
     
     if(![[VKMusicDB sharedInstance] saveMusic:userMusic]) {
         // could not save user music
@@ -79,6 +102,8 @@
 -(void) viewDidAppear:(BOOL)animated 
 {
     [super viewDidAppear:animated];
+    
+    noAccessView.hidden = YES;
     [self synch];
 }
 
